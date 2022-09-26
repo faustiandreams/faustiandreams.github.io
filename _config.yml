@@ -74,3 +74,4 @@ exclude:
   - "LICENSE"
   - "READE.md"
   - "screenshot.png"
+  - vendor
