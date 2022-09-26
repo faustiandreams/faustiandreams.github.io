@@ -1,0 +1,44 @@
+.posts {
+    margin-top: 2.7rem;
+    .post_titles {
+        a {
+            color: $wine;
+            display: inline-block;
+            left: 50%;
+            right: 50%;
+            width: fit-content;
+            .title_line {
+                position: relative;
+                margin: 0.24rem 0;
+                border-bottom: 1.3px solid #000;
+                alignment: center;
+            }
+            &:hover, {
+                opacity: .6;
+                .title_line {
+                    /* margin: 0.24rem 1rem 0.24rem 2rem; */
+                    transition: all 0.2s linear;
+                    transform: scale(0.8)
+                }
+            }
+        }
+    }
+    text-align: center;
+
+    .tag_list{
+        color: $grey-5;
+        margin: -0.1rem 0 3rem 0;
+        a {
+            color: $grey-5;
+            &:hover, &:focus {
+                opacity: 0.8;
+            }
+        }
+    }
+}
+
+
+.post_excerpt {
+    margin: -1.3rem 0 0rem 0;
+}
+

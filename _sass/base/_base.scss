@@ -1,0 +1,67 @@
+
+body {
+  color: $default-color;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: $montserrat;
+  font-size: 14px;
+
+  @media (min-width: 600px) {
+    font-size: 16px;
+  }
+}
+
+
+/* This is changing the configuration of all the headers. Not sure if that's what I want */
+h1,h2,h3,h4,h5,h6 {
+  color: $default-shade;
+  font-family: $montserrat;
+  line-height: normal;
+}
+
+p {
+  color: $default-shade;
+  font-family: $montserrat;
+  line-height: normal;
+}
+
+ul {
+  padding: 0.1rem 0.2rem 0.2rem 0.7rem;
+}
+
+/* The comment below is wrong. The purpose of the line below is to configure cliccable stuff apparaence  */
+/* Refers to the names of the posts. This config is overriding the _layout.css a. Not sure this is needed here, as the layout is shared*/
+
+a {
+  color: $default-color;
+  text-decoration: none;
+}
+
+
+blockquote {
+  border-left: .25rem solid $grey-2;
+  color: $grey-1;
+  margin: .8rem 0;
+  padding: .5rem 1rem;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 600px) {
+    padding: 0 5rem 0 1.25rem;
+  }
+}
+
+img {
+  display: block;
+  margin: 0 0 1rem;
+  max-width: 100%;
+}
+
+td {
+  vertical-align: top;
+}

@@ -1,0 +1,25 @@
+.tag{
+  margin-left: 31rem;
+
+  a{
+    color: $grey-5;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    &:hover, &:focus {
+      opacity: 0.8;
+    }
+  }
+  color: black;
+  .tag-title {
+    margin-top: 3rem;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-left: -31rem;
+    color: black;
+    margin-bottom: 3.5rem;
+
+  }
+}
+
+
+

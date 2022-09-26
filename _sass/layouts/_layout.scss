@@ -1,0 +1,95 @@
+/* This config is for the general layout. Each page will use this configuration as a base and build on top of it. */
+/* The navigation bar is configured here and inherited everywhere else */
+
+/* This is the configuration  */
+
+
+
+/*  Not sure if this does anything.
+.container {
+  margin: 0;
+  width: 100%;
+}
+*/
+
+.nav {
+  z-index: 9999;
+  box-sizing: content-box;
+  height: 4rem;
+  background-color: black;
+  box-shadow: 0 2px 4px 0 grey;
+
+  /* Making the navigation bar sticky in the proper way. top: 0 is needed in the same block! */
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+
+  /* The & in the syntax below concatenates the terms "nav" and "-container" and the concatenated value refers to the class "nav-container" */
+  &-container {
+    /* The following percentage decides where the text will be in the navigation bar */
+    width: 80%;
+    margin: auto;
+    text-align: left;    /* Where the text start in the navigation bar */
+    margin-bottom: 4rem;
+  }
+
+
+  &-title {
+    @include transition(all .2s ease-out);
+    color: $ivory;
+    display: inline-block;
+    margin: 1rem; /* Refers to the title */
+    padding-right: .2rem;
+
+    &:hover, &:focus {
+      opacity: .6;
+    }
+  }
+
+  ul {
+    margin: -3.43rem 0 0;
+    text-align: right;
+  }
+
+  li {
+    @include transition(all .2s ease-out);
+    color: $ivory;
+    display: inline-block;
+    /* Refers to the distance between the page names in the navigation bar */
+    padding: 1rem 0 0.1rem 1.3rem;
+    text-decoration: none;
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    /* Reaction to hovering */
+    &:hover, &:focus {
+      opacity: .6;
+    }
+  }
+
+  /* Configurations for the text of the pages in the navigation bar */
+  a {
+    text-decoration: none;
+    color: $ivory;
+    font-family: $montserrat;
+  }
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+  font-family: $montserrat;
+  /* How far from the bottom to put the element */
+  bottom:5px;
+  font-size: .8rem;
+  color: $grey-5;
+  /* Used to center the footer horizontally */
+  text-align: center;
+  width: 100%;
+}

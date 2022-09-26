@@ -1,0 +1,76 @@
+# Site settings
+title: AAA
+baseurl: ""
+url: "https://enea-shaqiri.github.io"
+google_analytics: # Tracking ID, e.g. "UA-000000-01"
+
+# Author
+author:
+  name: Enea Shaqiri
+  desc: A math flavoured corner of the web
+  email: enea105@hotmail.it
+  selfie: assets/img/profile.jpg
+
+# social
+social:
+  email: true
+  behance:
+  bitbucket:
+  dribbble:
+  facebook:
+  flickr:
+  github: true
+  google_plus:
+  instagram:
+  keybase:
+  linkedin:
+  pinterest:
+  reddit:
+  soundcloud:
+  stack_exchange: true
+  steam:
+  tumblr:
+  gitlab:
+  twitter:
+  vimeo:
+  wordpress:
+  youtube:
+  default_txt:
+
+# Build settings
+markdown: kramdown
+kramdown:
+    math_engine: katex
+mathjax: true
+
+# Assets
+sass:
+  sass_dir: _sass
+  style: compressed
+
+tag_layout: tagpage
+tag_dir: tag
+
+# Gems
+plugins:
+  - jekyll-paginate
+  - jekyll-scholar
+
+scholar:
+  style: custom
+  source: _bibliography
+  bibliography_list_tag: p
+  bibliography_item_tag: p
+  bibtex_filters:
+    - latex
+
+# Permalinks
+permalink: /:year-:month-:day/:title
+paginate: 100
+exclude:
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "*.gem"
+  - "LICENSE"
+  - "READE.md"
+  - "screenshot.png"

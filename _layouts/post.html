@@ -1,0 +1,26 @@
+---
+layout: base 
+---
+
+<div class="post">
+  <h2 class="post-title">{{ page.title }}</h2>
+
+
+  {% assign sorted_tags =  site.posts | map: 'tags' | join: ','  | split: ',' | uniq | sort %}
+  {% for post_ in site.posts %}
+    {% if post_.title == page.title %}
+      {% assign result = "" %}
+      {% assign sorted_page_tags = post_.tags | sort %}
+        {% capture result %}
+          {% for tag in sorted_page_tags %}
+            #<a href= "/tag/{{ tag }}">{{ tag }}</a>
+            {% unless forloop.last %}{% endunless %}
+          {% endfor %}
+        {% endcapture %}
+    {% endif %}
+  {% endfor %}
+  <div class="tag_list">{{ result }}</div>
+  <div class="post_content">{{ content }}</div>
+  </br>
+  </br>
+</div>

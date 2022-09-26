@@ -1,0 +1,33 @@
+---
+layout: base
+---
+
+<!--- This page inherits the base layout and on that it defines its own classes and eventually its own layout (not here, but in the css file) --->
+
+<!--- There is a class definition here. This class will be customizable in the _layout/_posts, using the syntax .class_name {} --->
+<div class="tags">
+  {% assign sorted_tags =  site.posts | map: 'tags' | join: ','  | split: ',' | uniq | sort %}
+    {% for tag in sorted_tags %}
+    {% assign counter = 0 %}
+    {% assign t = tag %}
+      {% for post in site.posts %}
+      <!--- t is a string with a lot of text in it. Thus we check if post.tag is contained in t --->
+        {% if post.tags contains t %}
+          {% capture counter %}{{ counter | plus:1 }}{% endcapture %}
+        {% endif %}
+
+      {% endfor %}
+
+
+      <div class="tag_title">
+        <h2>
+          {% assign url = site.baseurl %}
+          {% assign url2 = url | first %}
+          <a href="/tag/{{ tag }}">#{{ t }} ({{ counter }})</a>
+        </h2>
+      </div>
+
+  {% endfor %}
+</div>
+
+
