@@ -212,7 +212,6 @@ and
 \\[
   V^H\frac{\pi\left(1-\theta_{n-1}\right)\theta_{n-1}}{\pi\theta_{n-1} +\frac{1-\pi}{2}}.
 \\]
-For the $V^H$ term the math becomes obvious using the formula $\pi\theta_{n-1} + \frac{1+\pi}{2} -\pi\theta_{n-1} = \pi\theta_{n-1} +\frac{1-\pi}{2} - \pi\left(1-\theta_{n-1}\right)$.
 
 Analogously we get 
 \\[
