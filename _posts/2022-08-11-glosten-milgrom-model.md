@@ -210,7 +210,7 @@ where the second equality is obtained by adding and subtracting
 \\]
 and  
 \\[
-  V^H\frac{\pi\theta_{n-1}\theta_{n-1}}{\pi\theta_{n-1} +\frac{1-\pi}{2}}.
+  V^H\frac{\pi\left(1-\theta_{n-1}\right)\theta_{n-1}}{\pi\theta_{n-1} +\frac{1-\pi}{2}}.
 \\]
 For the $V^H$ term the math becomes obvious using the formula $\pi\theta_{n-1} + \frac{1+\pi}{2} -\pi\theta_{n-1} = \pi\theta_{n-1} +\frac{1-\pi}{2} - \pi\left(1-\theta_{n-1}\right)$.
 
