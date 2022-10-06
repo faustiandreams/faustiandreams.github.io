@@ -9,15 +9,23 @@
     }
   }
   .post_content {
-      h2 {
+    a {
+      color: $grey-5;
+      &:hover, &:focus {
+        opacity: 0.8;
+      }
+    }
+    h2 {
+        color: $lighter-black;
         font-size: 2rem;
       }
-  max-height: 70%;
+    max-height: 70%;
     p {
       font-family: $montserrat;
       margin-left: 25rem;
       margin-right: 25rem;
       text-align: left;
+      color: $lighter-black;
 
 
     }
@@ -27,7 +35,19 @@
       margin-left: 27rem;
       margin-right: 27rem;
       text-align: left;
+      color: $lighter-black;
+
     }
+    ol {
+      font-family: $montserrat;
+
+      margin-left: 27rem;
+      margin-right: 27rem;
+      text-align: left;
+      color: $lighter-black;
+
+    }
+
   }
 
   &-title {
@@ -35,6 +55,8 @@
     font-size: 2.6rem;
     margin: 1rem 0;
     text-align: center;
+    color: $lighter-black;
+
   }
 
   a:hover {
