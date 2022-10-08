@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: market_making paper_explained
+tags: nn_layers
 mathjax: true
 excerpt: hey there
 title: "Deconvolutions"
@@ -14,11 +14,12 @@ Let's define them in a different way and then interpret the result with a slidin
 Given an "image" $x\in\mathbb{R}^{n\times m}$ and a filter $w\in\mathbb{R}^{t\times t}$ 
 the convolution operator produces a new image $z\in\mathbb{R}^{fill}$ with 
 \\[
-  z_{i, j}= \sum_{l=1}^t\sum_{k=1}^t w_{lk}x_{i+l, j+k}.
+  z_{i, j}= \sum_{l=1}^t\sum_{k=1}^t w_{lk}x_{i-1+l, j-1+k}.
 \\]
 The convolution operation is usually depicted as sliding the filter over the image and taking the weighted sum of 
 the indices of the components of the image that are selected by the filter. The weights in the sum are given by the filter.
-This operation can also be defined as a matrix-vector multiplication. To give an example let's take $n=m=3$, $t=2$. If we unroll $x$ we get
+This operation can also be defined as a matrix-vector multiplication. To give an example let's take $n=m=3$, $t=2$. If we write $x$
+explicitly we get
 \\[
   \tilde{x} = 
   \begin{bmatrix}
@@ -28,8 +29,9 @@ This operation can also be defined as a matrix-vector multiplication. To give an
   \end{bmatrix}
 \\]
 We are looking for a matrix $V$ such that $\tilde{z} = V\tilde{x}$, with the elements of $V$ being related to $w_{i,j}$ in some way.
+To figure out the elements of this matrix we look at the values of $z_{ij}$.  
 
-From the expression above we have 
+From the expression above @TODO number the equation we have 
 \\[
   z_{11}=v_{1,1}x_{1,1} + v_{1,2}x_{1,2} + v_{1,4}x_{2,1} + v_{1,5}x_{2,2},
 \\]
@@ -43,7 +45,7 @@ Increasing $i$ by one we get a formula for $z_{i+1,1}$, which is very similar to
 with the only difference that the first index of each $x_{a,b}$ is increased by one. 
 This means that when we increase $i$  we build a row of $V$ by shifting the previous row by one element to the right 
 (and adding a $0$ on the left). When we cannot increase $i$ (in our case $i$ cannot be $4$), we have to increase $j$. 
-Increase $j$ means that the first element of $\tilde{x}$ we consider in the sum is two positions below the first element 
+To increase $j$ means that the first element of $\tilde{x}$ we consider in the sum is two positions below the first element 
 of $\tilde{x}$ we consider when we had $j$ instead of $j+1$. This means that  we build a row of $V$ by shifting the previous
 row by two element to the right (and adding two zeros on the left). All in all we end up with a matrix
 \\[
