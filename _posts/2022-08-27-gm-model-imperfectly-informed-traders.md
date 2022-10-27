@@ -2,12 +2,12 @@
 layout: post
 tags: market_making
 mathjax: true
-excerpt: hey there
+excerpt: Extension of the Glosten Milgrom model to allow for uncertain informed traders
 title: "Glosten Milgrom with imperfectly informed traders"
 ---
 
-We extend the GM model presented [here]({{ site.baseurl }}{% link _posts/2022-08-11-glosten-milgrom-model.md %})
- to allow for informed traders to have imperfect information. 
+We extend the GM model presented [here]({{ site.baseurl }}{% link _posts/2022-08-23-glosten-milgrom-model.md %})
+to allow for informed traders to have imperfect information. 
 By imperfect information we mean that the informed trader will follow a signal, say $\alpha$, to buy or sell. 
 Differently from the base GM model, this signal is accurate with probability $\rho\in(\frac{1}{2}, 1]$.  
 The case $\rho=1$ gives a perfectly informed trader (and we will see that the math gives the same result); 

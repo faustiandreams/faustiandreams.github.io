@@ -2,7 +2,7 @@
 layout: post
 tags: market_making paper_explained
 mathjax: true
-excerpt: hey there
+excerpt: How do the markets digest information? Introduction to the Glosten Milgrom model
 title: "Glosten Milgrom model"
 ---
 

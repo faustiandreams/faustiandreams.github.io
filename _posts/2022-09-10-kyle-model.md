@@ -2,7 +2,8 @@
 layout: post
 tags: market_making paper_explained
 mathjax: true
-excerpt: hey there
+tags: market_making paper_explained
+excerpt: Introduction to equilibrium strategies for market participants
 title: "Kyle model"
 ---
 
@@ -10,7 +11,7 @@ title: "Kyle model"
 1985, what a great year for market making. Together with the Glostem-Milgrom model (GM from now), the seminal paper 
 {% cite kyle_continuous_auction %} was published: Kyle model was born. 
 Both papers build on the classification of the market participants into informed, uninformed and market makers. 
-We refer to this [post]({{ site.baseurl }}{% link _posts/2022-08-11-glosten-milgrom-model.md %}) 
+We refer to this [post]({{ site.baseurl }}{% link _posts/2022-08-23-glosten-milgrom-model.md %}) 
 for an explanation of these categories. While the GM model is sequential and focuses on the determinants of the 
 bid-ask spread, Kyle model is more geared towards optimal strategies for the market maker and the informed trader
 (sorry uninformed folks). What makes this model interesting is that it takes into account strategic behavior. 

@@ -2,7 +2,7 @@
 layout: post
 tags: market_making paper_explained
 mathjax: true
-excerpt: hey there
+excerpt: Calibration procedure for $\Lambda$ and $k$ in the AS model
 title: "Parameter calibration in Avellanda-Stoikov"
 ---
 
