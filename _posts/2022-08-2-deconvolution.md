@@ -4,6 +4,7 @@ tags: nn_layers
 mathjax: true
 excerpt: hey there
 title: "Deconvolutions"
+published: false
 ---
 
 Convolutions have enjoyed a discrete success in neural network architectures. 

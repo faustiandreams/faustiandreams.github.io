@@ -4,6 +4,7 @@ tags: bayesian paper_explained
 mathjax: true
 excerpt: hey there
 title: "Thoughts on Bayesian online changepoint detection"
+published: false
 ---
 
 The article "Bayesian online changepoint detection" certainly has a title that makes it easy to sell: the authors are proposing an online changepoint detection method and this method is Bayesian! What else can you ask from life? To my surprise, the first time I approached this article I had to give up, because I couldn't really fill up some details myself. To be fair to the article, I was not that acquainted with the Bayesian way of seeing the world. Let's get mathy and explore the formulas and the core ideas in depth.
