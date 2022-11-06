@@ -12,7 +12,7 @@ title: "Kyle model"
 {% cite kyle_continuous_auction %} was published: Kyle model was born. 
 Both papers build on the classification of the market participants into informed, uninformed and market makers. 
 We refer to this [post]({{ site.baseurl }}{% link _posts/2022-08-23-glosten-milgrom-model.md %}) 
-for an explanation of these categories. While the GM model is sequential and focuses on the determinants of the 
+for an explanation of these categories. <br>  While the GM model is sequential and focuses on the determinants of the 
 bid-ask spread, Kyle model is more geared towards optimal strategies for the market maker and the informed trader
 (sorry uninformed folks). What makes this model interesting is that it takes into account strategic behavior. 
 Market participants "know" about the
@@ -21,8 +21,9 @@ inference about the source of the market orders. In this model the informed trad
 Specifically, he is aware that other market participants will try to extract as much value as possible from his actions
 and eat into his projected profit. He needs to choose is actions to make the other players as uncertain as possible about
 the extent of his presence in the market. While the informed trader will choose his strategy to maximise his profit, 
-the market maker will choose the way to price the asset s.t. his expected profit is $0$. So we are assuming the market 
-maker not to charge anything on top of the best estimate for the asset he gets given the order flow.
+the market maker will choose the way to price the asset s.t. his expected profit is $0$. This last condition 
+is usually explained through perfect competition between market makers, and ensures that the market maker is providing
+to the market the best price available given the current information.
 
 In this model we have one trading period which is divided in two steps. 
 
@@ -50,7 +51,9 @@ In this model we have one trading period which is divided in two steps.
 The informed trader and the market maker have to choose how to play their hand. 
 The informed trader needs to choose a strategy, $X$, and the market maker needs to choose a pricing function $P$.
 Let's use the assumptions above to derive a meaningful notion of equilibrium for the two agents. An equilibrium
-will involve a strategy for the informed trader and a pricing function s.t. this couple is optimal (in the sense of Nash). @TODO verify claim
+will involve a strategy for the informed trader and a pricing function s.t. the informed trader maximizes his
+expected profit, given the pricing function; the market maker profit is one average $0$, given the insider
+strategy.
 
 For a given price $p$ and some aggregate order flow $q$, the assumption of $0$ expected profit reads
 \\[
@@ -97,16 +100,28 @@ where $\beta$ and lambda are constants such that
   \end{equation}
 \\]
 \\[\tag*{$\square$}\\]
-This theorem is remarkable in the sense that it gives a full characterisation of the equilibrium in the affine case. 
-Let's investigate the meaning of this equilibrium. 
-The parameter $\beta$ controls how aggressive the informed trader will be in placing his order. We observe that this parameter increases with $\sigma_u^2$, which means the more uncertainty there is about the order the uninformed trader will submit, the more comfortable the informed trader is to submit a large order. This result tells us that the informed trader is using the uniformed order flow to hide his intentions.
-The parameter $\lambda$ is related the impact the order size has on the market. Specifically  $\frac{1}{\lambda}$ measures the amount of order flow needed to increase the price by one dollar. $\frac{1}{\lambda}$ is directly proportional to the market depth, meaning the larger this amount is, the less impact large volume has on the price. $\lambda$ is the price sensitivity in the market maker strategy; a larger value of $\lambda$ means that the market maker reacts more to the information present in the order flow, as if he was not too certain about his a priori estimate of the asset value.
+This theorem is remarkable in the sense that it gives a full characterisation of the equilibrium in the affine case. <br> 
+The parameter $\beta$ controls how aggressive the informed trader will be in placing his order. We observe that this 
+parameter increases with $\sigma_u^2$, which means the more uncertainty there is about the order the uninformed trader 
+will submit, the more comfortable the informed trader is to submit a large order. This result tells us that the informed 
+trader is using the uniformed order flow to hide his intentions. <br> 
+The parameter $\lambda$ is related the impact the order size has on the market. Specifically  $\frac{1}{\lambda}$ 
+measures the amount of order flow needed to increase the price by one dollar. $\frac{1}{\lambda}$ is directly proportional 
+to the market depth, meaning the larger this amount is, the less impact large volume has on the price. $\lambda$ is the
+price sensitivity in the market maker strategy; a larger value of $\lambda$ means that the market maker reacts more to 
+the information present in the order flow, as if he was not too certain about his a priori estimate of the asset value.
 We notice that there are two different types of factor determining how much the market maker will react to the volume traded. 
 
 - $\sigma_{p_0}$ at the numerator tells us that the larger the uncertainty about the a priori estimate of the value of the asset (that is before observing any order flow), the more the market maker should update his best guess about the value of the asset after seeing the order flow. 
 - $\sigma_{u}$ is related to uncertainty about the uninformed trader order size. The reason this factor is at the denominator, despite being related to uncertainty, is that the more certain the market maker is about the uninformed trader order size, the more likely it is that the uninformed order is small and that the order flow is dominated by the informed order. In this circumstance, the market maker knows that he needs to be more drastic in reassesing the asset value and choosing how to price it.
 
 <br>  
+<h2>
+    Conclusion
+</h2>
+
+
+<br>
 
 ## References
 {% bibliography --cited %}

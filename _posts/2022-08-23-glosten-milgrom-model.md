@@ -43,7 +43,7 @@ The high level distinction between the three groups is their ability to assess t
 At this point some questions arise: How is the market maker profit generated if informed traders are always making 
 money off him? How are bid and ask prices quoted (is the bid-ask spread even positive)? 
 What should the market maker do to improve his estimate of value? We can answer the first question immediately and 
-answer the others (and related questions by the end).  
+answer the others (and related questions) by the end.  
 
 
 
@@ -60,7 +60,7 @@ This assumption pushes the bid-ask spread towards $0$.
 
 *Observation (following, to some extent, Bagehot 1971)* In the market food chain it is clear from the above characterisation
 that the informed trader eats the market maker (at least statistically).  We call adverse selection the practice of being
-picked up for a trade by a better informed counterpart. This means that to avoid extinction the market maker need to feed 
+picked up for a trade by a better informed counterpart. This means that to avoid extinction the market maker needs to feed 
 on a different creature. You guessed it, it's the uninformed trader. The way this works is that when quoting bid and ask 
 prices the market maker should account for the fact the he needs to make up for the (losing) trades against the speculator.
 Adverse selection (and ultimately the presence of informed traders) has the opposite effect of perfect competition: 
@@ -85,11 +85,11 @@ the (unknown) value of the asset.
   can assume one of two values $V^H$ or $V^L$ (high or low), with $V^H > V^L$. This assumption allows for simpler 
   computations without crippling the conclusions of the model.
 - At each iteration $n$ there is a trade happening. We denote by $d_n$ the signed trade size. In GM trades are set to 
-  be of unit size, which amount to set
+  be of unit size, which amounts to set
   \\[
     d_n = \begin{cases}1\ \text{if the order is buy}\\\ -1\ \text{if the order is sell}.\end{cases}
   \\]   
-  The order flow information  is the only observable for the market maker (he is not considering the price history or his pnl).
+  The order flow information  is the only observable variable for the market maker (he is not considering the price history or his pnl).
   We denote the order flow information by $\Omega_n := \\{d_1, \dots, d_n\\}$. Based on this information the dealer is going 
   to update his belief (Bayesian learning, anybody?) about the asset value.
 - The model is sequential. We have a total of $N$ iterations. The first action in the period is the dealer quoting bid and ask prices. 
@@ -106,7 +106,7 @@ the (unknown) value of the asset.
     \end{align}  
   \\]
     Notice that from this definition alone it is not clear if $a_n>b_n$. We will have to prove this fact!
-- The next thing that happens at iteration $n$ is the trade. Of course the market maker does not know the identity of 
+- The next thing that happens at iteration $n$ is the insider's trade. Of course the market maker does not know the identity of 
   the next trader. We model this by assuming to sample either an informed trader, with probability $\pi$ or an uninformed 
   trader, with probability $1-\pi$. The uninformed trader is assumed to trade randomly and buy or sell with probability 
   $\frac{1}{2}$. The informed trader buys only when he has statistical hedge: he buys with probability $1$ if the ask 
@@ -164,8 +164,8 @@ Instead, we proceed by directly computing the ask price from the definition, usi
 \\[
   \begin{aligned}
     a_n &= \mathbb{E}[V\vert \Omega_{n_1}, d_n=1]  \\\  
-    & =V^H\mathbb{P}(V=V^H\vert\Omega_{n-1}, d_n=1)+ V^L\mathbb{P}(V=V^L\vert \Omega_{n-1},d_n = 1) \\\  
-  \end{aligned},
+    & =V^H\mathbb{P}(V=V^H\vert\Omega_{n-1}, d_n=1)+ V^L\mathbb{P}(V=V^L\vert \Omega_{n-1},d_n = 1), \\\  
+  \end{aligned}
 \\]
 where we used only the law of total probability. Let's focus on the first term of the sum 
 \\[
@@ -176,8 +176,7 @@ where we used only the law of total probability. Let's focus on the first term o
 \\]
 It is clear that we get a similar formula for the $V=V^L$ part. 
 From the above definitions we have $\mathbb{P}(V=V^H\vert\Omega_{n-1}) = \theta_{n-1}$. To compute the denominator 
-we condition on $V^H$ and $V^L$ and notice all is left to compute is the other term at the numerator 
-(the denominator is just the sum of the conditional probability of the next trade given $V$). 
+we condition on $V^H$ and $V^L$ and notice that if we compute both terms at the denominator (after conditioning) we are done. 
 Let's focus on the case $V=V^H$ as the other one is analogous. From the assumption of conditional independence we have
 \\[
   \mathbb{P}(d_n=1\vert\Omega_{n-1}, V=V^H)=\mathbb{P}(d_n=1\vert V=V^H).
@@ -266,7 +265,7 @@ guess. His new best guess, after seeing a buy order is
 \\[
   \mu_n^+ =\theta_n^+V^H + (1-\theta_n ^+)V^L.
 \\]
-If we now substitute $\mu_{n-1}$ using the definition, and the value of $\theta_n^+$ from two paragraphs ago, we can easily compute 
+If we now plug in the definition of $\mu_{n-1}$, and the value of $\theta_n^+$ from two paragraphs ago, we can easily compute 
 \\[
   \mu_n^+ - \mu_{n-1} = \frac{\pi\theta_{n-1}(1-\theta_{n-1})}{\pi\theta_{n-1}+ \frac{1-\pi}{2}}\left(V^H - V^L\right).
 \\]
@@ -282,18 +281,19 @@ already price the asset at $\mu_n^+$ (this is a more formal way to say that he i
 The model is very interesting, as with very simple assumptions it is able to reproduce some phenomena seen in the markets 
 and explain them. We have seen that there are different types of risks the maker-maker bears, all coming from information
 disadvantage. This is enough for the market maker to quote positive spreads just to break even. Since the market maker 
-is just breaking even, this means that the profits made by the informed traders are paid by the uninformed traders. 
-The model is also Bayesian in nature and it shows how the information content of the trades affects the beliefs of the 
+is just breaking even, this means that the profits made by the informed traders are paid by the uninformed traders.  
+The model is also Bayesian in nature, and it shows how the information content of the trades affects the beliefs of the 
 market maker, and ultimately the prices available to buy and sell. The model also presents a simple mechanism that 
 explains how information is assimilated by the markets, which sounds more reasonable than the 
 "information propagates immediately" conclusion of the EMH. We won't get into it, but it can be proved that while the 
 model does not satisfy the strong form of the EMH (in general), it does satisfy the semi-strong version of it.
 
-It is clear that the model is highly stylized and some hypothesis are too strong. Let's go through some of them.
+It is clear that the model is highly stylized and some hypothesis are too strong. Let's go through some of them.  
 The model assumes the value of the asset to be fixed within the period and all informed traders to know it with 
 certainty, which is not very realistic. In the real world even informed traders can have different estimates for the 
 value of the asset. Interestingly this would imply that the bid-ask spread is being paid also by some informed traders, 
-when there is disagreement about the value of the asset. The trade size is assumed to be $1$, which greatly simplifies 
+when there is disagreement about the value of the asset.  
+The trade size is assumed to be $1$, which greatly simplifies 
 the computation, but ignores the importance of volume as source of information.
  
 
