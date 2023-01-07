@@ -36,7 +36,7 @@ In this model we have one trading period which is divided in two steps.
   Assumptions and notation
 </h2>
 
-- All trading activity happens in one period. As described above in this period there are no iterations, but only two steps.
+- All trading activity happens in one period. As described above in this period there are no iterations, but only two steps. 
 - The uninformed trader chooses (randomly) to submit an order of size $u$. We assume $u\sim\mathcal{N}(0, \sigma^2_u)$ and $u$ is independent of all the other random variables.
 - The informed trader knows the value $V$ the asset will have at the end of the period. He is not assumed to know the value of $u$, but he knows $\sigma^2_u$. We will see how this knowledge will play a role in his strategy. He also does not know the current price of the asset, or how the market maker is going to price it (he has access to the price history though). The order of the informed trader has size $x$, which depends on $V$, we denote this dependence by $x=X\left(V\right)$, where $X$ is a measurable function. 
 - For the market maker the value of the asset is a random variable following the distribution $\mathcal{N}(p_0, \sigma^2_{p_0})$. 
