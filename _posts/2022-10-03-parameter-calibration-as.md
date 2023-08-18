@@ -3,10 +3,10 @@ layout: post
 tags: market_making paper_explained
 mathjax: true
 excerpt: Calibration procedure for $\Lambda$ and $k$ in the AS model
-title: "Parameter calibration in Avellanda-Stoikov"
+title: "Parameter calibration in Avellaneda-Stoikov"
 ---
 
-The Avellanda-Stoikov (AS for short) model for market making is a classical example of how to approach market making
+The Avellaneda-Stoikov (AS for short) model for market making is a classical example of how to approach market making
 as a stochastic control problem. We will assume familiarity with the framework and 
 focus on estimating the parameters discussed in section "2.5" of {% cite avellaneda_stoikov_mm_model %}.
 
@@ -35,14 +35,14 @@ Let's focus on the ask side. We can write
 where the last equality follows from an easy integration. We set $A=\frac{\Lambda}{\alpha}$ and $k=\alpha K$. Similarly for the bid side.
 
 This result gives us a functional form for the intensity, and we will use this functional form and market data to estimate $A$ and $k$, as 
- described in {% cite laruelle_parameter_estimation %}, {% cite kch_avellanda_stoikov %} and {% cite naz_avellanda_stoikov %}.
+ described in {% cite laruelle_parameter_estimation %}, {% cite kch_avellaneda_stoikov %} and {% cite naz_avellaneda_stoikov %}.
 As above, we focus only on the ask side.
 
 - We pick a time $t_0$ and record the mid-price at $t_0$, say $m(t_0)$.
 - We look for the first time $\bar{t}(t_0)=\inf\\{t\in[t_0, T]\ \vert\ \text{the order with price } P^a(t_0) \text{ is executed}\\}$ 
   and record both $\bar{t}(t_0)$ and  $\delta^a(t_0)$. The maximum time limit, $T$, has been added to prevent the search from running forever.  
   Here we are assuming we posted an order at price $P^a(t_0)$ and we are interested to know how long it takes for the order to be executed.
-  As observed by Lehalle in {% cite kch_avellanda_stoikov %}, 
+  As observed by Lehalle in {% cite kch_avellaneda_stoikov %}, 
   there are some choices to make at this point, related to our order not actually being on the orderbook.  
   First, we need to decide what to do if $P^a(t_0)$ is smaller than the actual best ask observed in the data, which can happen if
   the bid-ask spread is wider than its minimum value.  
@@ -56,7 +56,7 @@ As above, we focus only on the ask side.
   from a Poisson distribution with parameter $\lambda^a(\delta^a)$, we can estimate $\lambda^a(\delta^a)$ with the average 
   over $\Gamma(\delta^a)$, which we denote by $\langle\Gamma_{t_i}(\delta^a)\rangle$.
 - If we plot the points $I = \\{(\delta^a(t_i), \langle\Gamma_{t_i}(\delta^a)\rangle),  i\geq 0\\}$, the resulting plot should be similar
-  to {% cite laruelle_parameter_estimation %} and {% cite naz_avellanda_stoikov %}.
+  to {% cite laruelle_parameter_estimation %} and {% cite naz_avellaneda_stoikov %}.
   To estimate $A$ and $k$ we consider two points from $I$ and fit an exponential of the same form of $(1)$. Let's call
   $\delta^a(t_j),\ \delta^a(t_l)$ the $x$-axis component of these points. With simple math
   we get the relationships
