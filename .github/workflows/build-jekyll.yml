@@ -1,30 +1,78 @@
-name: Build and Deploy to Github Pages
+# .github/workflows/deploy.yml
 
+name: Deploy to GitHub Pages
+
+# Run on pushes to the main branch and allow manual runs
 on:
   push:
-    branches:
-      - main  # Here source code branch is `master`, it could be other branch
-  workflow_dispatch:
-    branches:
-      - main
+    branches: [ "main" ] # Or 'master' if that's your default branch
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read       # To check out the repository
+  pages: write        # To deploy to Pages
+  id-token: write     # To authenticate with OIDC
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build_and_deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+  # Build job (optional, if you need build steps like npm run build, jekyll build, etc.)
+  # If your site is pure HTML/CSS/JS and needs no building, you can remove this job
+  # and adjust the 'deploy' job below to checkout code directly.
+  # For now, let's assume NO build step is needed for a standard username.github.io repo.
+  # If you DO need a build step, uncomment and adapt the 'build' job below.
+  
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #     # Add your build steps here, e.g.:
+  #     # - name: Set up Node.js
+  #     #   uses: actions/setup-node@v4
+  #     #   with:
+  #     #     node-version: '20' # Specify your Node.js version
+  #     #     cache: 'npm' # Or 'yarn'
+  #     # - name: Install dependencies
+  #     #   run: npm ci # Or yarn install --frozen-lockfile
+  #     # - name: Build static site
+  #     #   run: npm run build # Or your build command
+  #     - name: Setup Pages
+  #       uses: actions/configure-pages@v5
+  #     - name: Upload artifact
+  #       uses: actions/upload-pages-artifact@v3
+  #       with:
+  #         # Upload the directory containing your built site files
+  #         # Common examples: './dist', './build', './_site', '.' (if no build step)
+  #         path: '.' # Adjust this if you have a build step putting files elsewhere
 
-      # Use GitHub Deploy Action to build and deploy to Github
-      - uses: jeffreytse/jekyll-deploy-action@v0.4.0
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }} # The URL will be shown in the workflow logs
+    runs-on: ubuntu-latest
+    # If you added the 'build' job above, uncomment the 'needs: build' line
+    # needs: build 
+    steps:
+      # If you DON'T have a build job, you need checkout and upload steps here:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          provider: 'github'
-          token: ${{ secrets.PAT }} # It's your Personal Access Token(PAT)
-          repository: ''             # Default is current repository
-          branch: 'gh-pages'         # Default is gh-pages for Github provider
-          jekyll_src: './'           # Default is root directory
-          jekyll_cfg: '_config.yml'  # Default is _config.yml
-          jekyll_baseurl: ''         # Default is according to _config.yml
-          bundler_ver: '>=0'         # Default is latest bundler version
-          cname: ''                  # Default is to not use a cname
-          actor: ''                  # Default is the GITHUB_ACTOR
-          pre_build_commands: ''     # Installing additional dependencies (Arch Linux)
+          # Upload the root directory ('./') since username.github.io serves from root
+          path: '.' 
+          
+      # The deploy step itself:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 
+        # No 'with' section needed here; it automatically picks up the artifact
