@@ -1,6 +1,6 @@
 # .github/workflows/deploy.yml
 
-name: Deploy React App to GitHub Pages
+name: Deploy to GitHub Pages
 
 # Run on pushes to the main branch and allow manual runs
 on:
@@ -21,42 +21,58 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build job: Sets up Node, installs dependencies, builds the site, and uploads artifact
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4 # Checks out your repository code
+  # Build job (optional, if you need build steps like npm run build, jekyll build, etc.)
+  # If your site is pure HTML/CSS/JS and needs no building, you can remove this job
+  # and adjust the 'deploy' job below to checkout code directly.
+  # For now, let's assume NO build step is needed for a standard username.github.io repo.
+  # If you DO need a build step, uncomment and adapt the 'build' job below.
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20 # Use a recent LTS version of Node.js
-          cache: 'npm'      # Enable caching for npm dependencies
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #     # Add your build steps here, e.g.:
+  #     # - name: Set up Node.js
+  #     #   uses: actions/setup-node@v4
+  #     #   with:
+  #     #     node-version: '20' # Specify your Node.js version
+  #     #     cache: 'npm' # Or 'yarn'
+  #     # - name: Install dependencies
+  #     #   run: npm ci # Or yarn install --frozen-lockfile
+  #     # - name: Build static site
+  #     #   run: npm run build # Or your build command
+  #     - name: Setup Pages
+  #       uses: actions/configure-pages@v5
+  #     - name: Upload artifact
+  #       uses: actions/upload-pages-artifact@v3
+  #       with:
+  #         # Upload the directory containing your built site files
+  #         # Common examples: './dist', './build', './_site', '.' (if no build step)
+  #         path: '.' # Adjust this if you have a build step putting files elsewhere
 
-      - name: Install dependencies
-        run: npm ci # 'ci' is recommended for CI/CD for faster, deterministic installs based on package-lock.json
-
-      - name: Build static site
-        run: npm run build # Executes 'vite build' as defined in your package.json
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5 # Configures Pages environment
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3 # Uploads the build output
-        with:
-          # Upload the 'dist' directory (Vite's default output)
-          path: './dist'
-
-  # Deployment job: Takes the artifact from 'build' and deploys it
+  # Deployment job
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }} # The URL will be shown in the workflow logs
     runs-on: ubuntu-latest
-    needs: build # Ensures the 'build' job completes successfully first
+    # If you added the 'build' job above, uncomment the 'needs: build' line
+    # needs: build
     steps:
+      # If you DON'T have a build job, you need checkout and upload steps here:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload the root directory ('./') since username.github.io serves from root
+          path: '.'
+
+      # The deploy step itself:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4 # Deploys the artifact uploaded in the 'build' job
+        uses: actions/deploy-pages@v4
+        # No 'with' section needed here; it automatically picks up the artifact
