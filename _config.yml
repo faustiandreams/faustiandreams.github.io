@@ -1,7 +1,7 @@
 # Site settings
 title: Faustian Dreams
 baseurl: ""
-url: "https://enea-shaqiri.github.io"
+url: "https://faustiandreams.github.io"
 google_analytics: # Tracking ID, e.g. "UA-000000-01"
 repository: 'faustiandreams/faustiandreams.github.io'
 # Author
@@ -56,6 +56,7 @@ plugins:
   - jekyll-paginate
   - jekyll-scholar
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 scholar:
   style: custom

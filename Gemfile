@@ -7,3 +7,4 @@ gem 'citeproc-ruby', group: :jekyll_plugins
 gem 'bibtex-ruby', group: :jekyll_plugins
 gem 'liquid', group: :jekyll_plugins
 gem "jekyll-seo-tag", group: :jekyll_plugins
+gem "jekyll-sitemap"
