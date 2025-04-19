@@ -55,6 +55,7 @@ tag_dir: tag
 plugins:
   - jekyll-paginate
   - jekyll-scholar
+  - jekyll-seo-tag
 
 scholar:
   style: custom
