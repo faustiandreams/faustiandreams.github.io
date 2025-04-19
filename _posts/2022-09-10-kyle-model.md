@@ -70,13 +70,17 @@ Formally we should have written $\Pi(P, X)(V, q) := (V - P(q)) X(V)$ as both $X$
 be evaluated on the value and the order flow respectively, but we follow the more agile notation of {% cite kyle_continuous_auction %}.
 
 
-*Definition* We call equilibrium a couple of (measurable) functions $(\bar{X}, \bar{P})$ such that 
-1. $\mathbb{E}\left[\Pi(\bar{P}, \bar{X})\vert V\right]>\mathbb{E}\left[\Pi(\bar{P}, X')\vert V\right]$, for all (measurable) 
+*Definition* We call equilibrium a couple of (measurable) functions $(\bar{X}, \bar{P})$ such that:
+
+**1.** $\mathbb{E}\left[\Pi(\bar{P}, \bar{X})(V, u)\vert V\right]\ge\mathbb{E}\left[\Pi(\bar{P}, X')(V, u)\vert V\right]$, for all (measurable)
 functions of the value of the asset $X'$. With this condition, we require the equilibrium strategy of the insider
-to be optimal in expectation, compared to any other strategy, assuming the equilibrium pricing is used.
-2. $\bar{P}\left(\bar{X}\left(V\right)+u\right)=\mathbb{E}[V\vert \bar{X}(V)+u]$. Not surprisingly we
+to be optimal in expectation (over $u$), compared to any other strategy $X'$, assuming the equilibrium pricing $\bar{P}$ is used.
+
+**2.** $\bar{P}\left(q\right)=\mathbb{E}[V\vert q=\bar{X}(V)+u]$. Not surprisingly we
 require the equilibrium pricing function to be equal to the expectation of the value of the asset given the order flow.
-This means that this pricing is efficient.
+This means that this pricing is efficient based on the information contained in $q$.
+
+
 
 
 <br>  
