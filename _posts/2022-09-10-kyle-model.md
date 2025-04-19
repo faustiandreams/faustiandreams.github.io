@@ -2,7 +2,6 @@
 layout: post
 tags: market_making paper_explained
 mathjax: true
-tags: market_making paper_explained
 excerpt: Introduction to equilibrium strategies for market participants
 title: "Kyle model"
 ---
@@ -15,11 +14,11 @@ We refer to this [post]({{ site.baseurl }}{% link _posts/2022-08-23-glosten-milg
 for an explanation of these categories. <br>  While the GM model is sequential and focuses on the determinants of the 
 bid-ask spread, Kyle model is more geared towards optimal strategies for the market maker and the informed trader
 (sorry uninformed folks). What makes this model interesting is that it takes into account strategic behavior. 
-Market participants "know" about the
-role and the objectives of the other parties. In the GM model we already saw that the market maker is trying to make 
+Market participants are aware of the others' objectives and information, and they strategically react to this awareness. 
+In the GM model we already saw that the market maker is trying to make 
 inference about the source of the market orders. In this model the informed trader will play strategically as well. 
 Specifically, he is aware that other market participants will try to extract as much value as possible from his actions
-and eat into his projected profit. He needs to choose is actions to make the other players as uncertain as possible about
+and eat into his projected profit. He needs to choose his actions to make the other players as uncertain as possible about
 the extent of his presence in the market. While the informed trader will choose his strategy to maximise his profit, 
 the market maker will choose the way to price the asset s.t. his expected profit is $0$. This last condition 
 is usually explained through perfect competition between market makers, and ensures that the market maker is providing
@@ -36,9 +35,9 @@ In this model we have one trading period which is divided in two steps.
   Assumptions and notation
 </h2>
 
-- All trading activity happens in one period. As described above in this period there are no iterations, but only two steps. 
+- All trading activity occurs within a single period, which is structured in two sequential steps.
 - The uninformed trader chooses (randomly) to submit an order of size $u$. We assume $u\sim\mathcal{N}(0, \sigma^2_u)$ and $u$ is independent of all the other random variables.
-- The informed trader knows the value $V$ the asset will have at the end of the period. He is not assumed to know the value of $u$, but he knows $\sigma^2_u$. We will see how this knowledge will play a role in his strategy. He also does not know the current price of the asset, or how the market maker is going to price it (he has access to the price history though). The order of the informed trader has size $x$, which depends on $V$, we denote this dependence by $x=X\left(V\right)$, where $X$ is a measurable function. 
+- The informed trader knows the asset's final value $V$ and the parameters of the uninformed order distribution, $\sigma^2_u$. Crucially, in equilibrium, the informed trader knows the market maker's pricing function $P(q)$ and chooses their order size $x=X(V)$ to maximize their expected profit given this rule. They do not know the realized uninformed order $u$ when choosing $x$.
 - For the market maker the value of the asset is a random variable following the distribution $\mathcal{N}(p_0, \sigma^2_{p_0})$. 
   He observes the quantity $q:=u+x$ but not $u$ or $x$. The market maker has to decide the price for $q$ so that he can clear the market. We assume the existence of only one market maker, who is risk neutral and prices the asset such that his expected profit is $0$. This condition will make the pricing depend only on the order flow.
 
@@ -113,13 +112,23 @@ the information present in the order flow, as if he was not too certain about hi
 We notice that there are two different types of factor determining how much the market maker will react to the volume traded. 
 
 - $\sigma_{p_0}$ at the numerator tells us that the larger the uncertainty about the a priori estimate of the value of the asset (that is before observing any order flow), the more the market maker should update his best guess about the value of the asset after seeing the order flow. 
-- $\sigma_{u}$ is related to uncertainty about the uninformed trader order size. The reason this factor is at the denominator, despite being related to uncertainty, is that the more certain the market maker is about the uninformed trader order size, the more likely it is that the uninformed order is small and that the order flow is dominated by the informed order. In this circumstance, the market maker knows that he needs to be more drastic in reassesing the asset value and choosing how to price it.
+- $\lambda$ is inversely proportional to $\sigma_{u}$. A larger $\sigma_{u}$ means more unpredictable noise trading. This makes it harder for the market maker to distinguish between informed volume and noise. Therefore, the market maker learns less from each unit of observed order flow $q$, and they react less aggressively by changing the price less per unit of $q$
+
 
 <br>  
 <h2>
     Conclusion
 </h2>
+The Kyle model provides a foundational framework for understanding strategic trading and price formation under asymmetric information. Unlike the Glosten-Milgrom model, which focuses on sequential trade and the bid-ask spread arising from adverse selection, Kyle highlights how a strategic informed trader chooses the size of their trade to maximize profit while considering its impact on the price. The model introduces key concepts like the informed trader's aggressiveness (β, showing how they hide behind noise) and market depth or price impact (λ, showing how order flow moves prices as information is revealed). The equilibrium price Pˉ(q) dynamically incorporates the information inferred from the total order flow q.
 
+However, like any theoretical model, the Kyle model relies on significant simplifying assumptions to achieve its elegant, solvable form. Several of these assumptions are not fully realistic representations of actual financial markets:
+- **Single Period and Single Informed Trader**: Real markets are continuous with numerous traders, potentially many of whom are informed and compete with each other.
+- **Perfect Information and Knowledge**: The assumption that the informed trader knows the final asset value V with certainty, knows the exact distribution of uninformed trades u, and, crucially for the equilibrium, knows the market maker's precise pricing function P(q), is a strong simplification. In reality, information is less perfect, distributions are unknown, and market participants' strategies are proprietary and dynamic.
+- **Exogenous Noise Trading**: Uninformed trading is modeled simply as random noise. In reality, "uninformed" traders have diverse reasons for trading (hedging, liquidity needs, portfolio rebalancing), and their behavior can be complex and correlated.
+- **Passive Market Maker**: The market maker is reactive, simply setting the price based on observed order flow to achieve zero expected profit. Real market makers actively manage inventory risk, have varying degrees of competitiveness, and employ more complex trading strategies.
+- **Specific Distributions**: The reliance on Gaussian distributions for V and u is mathematically convenient but doesn't capture the fatter tails often observed in financial data.
+
+Despite these simplifications, the Kyle model remains incredibly valuable. It provides a clear and tractable illustration of fundamental market microstructure dynamics: how strategic information trading occurs, how information gets impounded into prices through order flow, and what determines the sensitivity of price to volume (price impact/market depth). It serves as a crucial theoretical benchmark and a building block for understanding more complex real-world market phenomena. The concepts of strategic information revelation and price impact derived from Kyle are cornerstones of modern market microstructure theory.
 
 <br>
 
