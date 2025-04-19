@@ -8,10 +8,6 @@ body {
 html {
   font-family: $montserrat;
   font-size: 16px;
-
-  @media (min-width: 600px) {
-    font-size: 16px;
-  }
 }
 
 
@@ -20,12 +16,15 @@ h1,h2,h3,h4,h5,h6 {
   color: $default-shade;
   font-family: $montserrat;
   line-height: normal;
+  // Add vertical margins around headings for visual separation
+  margin-top: 2rem; // More space above headings
+  margin-bottom: 1rem; // Some space below headings before text starts
 }
 
 p {
   color: $default-shade;
   font-family: $montserrat;
-  line-height: normal;
+  line-height: 1.6;
 }
 
 ul {
