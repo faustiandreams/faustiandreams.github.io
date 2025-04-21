@@ -9,16 +9,15 @@
             width: fit-content;
             .title_line {
                 position: relative;
-                margin: 0.24rem 0;
+                margin: 0.05rem 0 0.75rem 0; // Gap above line is 0.05rem, gap below line is 0.24rem
                 border-bottom: 1.3px solid #000;
-                alignment: center;
+                // Removed non-standard alignment: center;
             }
-            &:hover, {
+            &:hover, &:focus {
                 opacity: .6;
                 .title_line {
-                    /* margin: 0.24rem 1rem 0.24rem 2rem; */
                     transition: all 0.2s linear;
-                    transform: scale(0.8)
+                    transform: scale(0.8);
                 }
             }
         }

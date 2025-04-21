@@ -1,18 +1,12 @@
-.social-layer {
-  text-align: center;
-  left: 50%;
-  font-size: 0.95em;
-  text-decoration: none;
-  opacity: 0.6;
+// components/_footer.scss
 
-  /* Used to display social icons on the same line */
-  .social-icons {
-    ul {
-      li {
-        margin-right: 0.90em;
-        /* Using only inline instead of inline-block generates a dash separating the elements */
-        display: inline-block;
-      }
-    }
-  }
+footer {
+  margin-top: auto; // Pushes footer to the bottom with flexbox body
+  font-family: $google-serif; // Set font explicitly if different from base
+  // bottom:5px; // This is likely ineffective, remove unless position is set
+  font-size: .8rem;
+  color: $grey-5; // Explicit color for footer text
+  text-align: center;
+  width: 100%;
+  padding: 1rem 0; // Add some padding
 }

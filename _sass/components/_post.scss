@@ -1,15 +1,24 @@
+// components/_post.scss
+
 .post {
   margin-top: 4rem;
-  text-align: center;
+  text-align: center; // Centers the block element, but text inside will align based on nested rules
+
   .tag_list{
     text-align: center;
     color: $grey-5;
+    font-family: $google-serif;
     &:hover, &:focus {
       opacity: 0.8;
     }
   }
+
   .post_content {
-    font-size: 17.6px;
+    font-size: 16px;
+    // Add max-width and margin: auto to create the centered narrow column
+    max-width: 1100px; // Or use a rem value like 45rem (45 * 16px = 720px) - adjust as needed
+    margin: 0 auto; // Center the content block horizontally
+    padding: 0 1rem; // Add some padding on the sides for smaller screens if needed
 
     a {
       color: $grey-5;
@@ -17,65 +26,55 @@
         opacity: 0.8;
       }
     }
+
     h2 {
         color: $lighter-black;
         font-size: 2rem;
+        font-family: $google-serif;
       }
-    max-height: 70%;
+
     p {
-      font-family: $montserrat;
-      margin-left: 25rem;
-      margin-right: 25rem;
-      text-align: left;
+      font-family: $google-serif;
+      // Removed margin-left/right - using max-width on parent instead
+      text-align: left; // Align text left within the centered max-width container
       color: $lighter-black;
       line-height: 1.6;
       margin-bottom: 1.5rem;
     }
-    ul {
 
-      font-family: $montserrat;
-      margin-left: 27rem;
-      margin-right: 27rem;
-      text-align: left;
+    ul, ol {
+      font-family: $google-serif;
+      // Removed margin-left/right - using max-width on parent instead
+      text-align: left; // Align list items left within the centered max-width container
       color: $lighter-black;
-
+      padding-left: 1.5rem; // Ensure standard list indentation
+      line-height: 1.6;
     }
-    ol {
-      font-family: $montserrat;
 
-      margin-left: 27rem;
-      margin-right: 27rem;
-      text-align: left;
-      color: $lighter-black;
-
-    }
     li {
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
     }
-
   }
 
   &-title {
-    font-family: $montserrat;
+    font-family: $google-serif;
     font-size: 2.6rem;
     margin: 1rem 0;
     text-align: center;
     color: $lighter-black;
-
-  }
-
-  a:hover {
-    text-decoration: none;
   }
 
   img {
+    display: block;
     margin: 0 auto 0.5rem;
+    max-width: 100%; // Ensure responsiveness
+    height: auto;
   }
 
   img + em {
     color: $default-tint;
     display: block;
-    font-family: $montserrat;
+    font-family: $google-serif;
     font-size: 0.9rem;
     font-style: normal;
     text-align: center;

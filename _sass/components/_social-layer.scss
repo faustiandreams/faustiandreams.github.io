@@ -1,0 +1,44 @@
+// components/_social-layer.scss
+
+.social-layer {
+  text-align: center; // Centers the content within the block
+  // left: 50%; // Removed - text-align: center handles horizontal alignment for inline content
+  font-size: 0.95rem; // Consider using rem for consistency with other font sizes
+  // opacity: 0.6; // Consider applying opacity on hover/focus to individual icons instead
+
+  // Styles specifically for the container holding the icons (if different from .social-layer)
+  .social-icons {
+    ul {
+      list-style: none; // Remove default list bullets
+      padding: 0; // Remove default padding
+      margin: 0; // Remove default margin
+    }
+
+    ul li { // Targeting list items directly within .social-icons ul
+      margin-right: 0.5rem; // Use rem for spacing consistency, adjust value as needed
+      display: inline-block; // Display items inline
+      // Removed explanatory comment - the display property clearly indicates intent
+
+      &:last-child {
+        margin-right: 0; // No margin on the last item
+      }
+
+      // Styles for the actual social links/icons
+      a {
+        text-decoration: none; // Ensure links have no underline
+        color: inherit; // Inherit color from li or set a specific color
+        opacity: 0.6; // Apply opacity to the link/icon by default
+        @include transition(opacity 0.3s ease-out); // Add transition for smooth hover
+
+        &:hover,
+        &:focus {
+          opacity: 1; // Full opacity on hover/focus
+        }
+
+        // Add styles for the icon itself if you are using icon fonts or SVGs
+        // i { ... }
+        // svg { ... }
+      }
+    }
+  }
+}

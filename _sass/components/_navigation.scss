@@ -1,0 +1,63 @@
+// components/_navigation.scss
+
+.nav {
+  z-index: 9999;
+  // box-sizing: content-box; // Consider if this is intentional, border-box is more common
+  height: 4rem;
+  background-color: black;
+  box-shadow: 0 2px 4px 0 grey;
+
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+
+  &-container {
+    width: 80%; // Navigation container width
+    margin: auto;
+    text-align: left;
+    // margin-bottom: 4rem; // This margin might belong outside the nav-container
+  }
+
+  &-title {
+    @include transition(all .2s ease-out);
+    color: $ivory;
+    display: inline-block;
+    margin: 1rem;
+    padding-right: .2rem;
+    font-family: $google-serif; // Explicitly set if different from base
+
+    &:hover, &:focus {
+      opacity: .6;
+    }
+  }
+
+  ul {
+    margin: -3.43rem 0 0; // Adjust as needed for vertical alignment
+    text-align: right;
+    // Inherits font and color unless set on li or a
+  }
+
+  li {
+    @include transition(all .2s ease-out);
+    color: $ivory; // Explicit color for list items
+    display: inline-block;
+    padding: 1rem 0 0.1rem 1.3rem;
+    // text-decoration: none; // Should be on the link (a)
+    font-family: $google-serif; // Explicitly set if different from base
+
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    &:hover, &:focus {
+      opacity: .6;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit; // Inherit color from the parent li or set explicitly
+    // font-family: $montserrat; // Inherit from li or set explicitly
+  }
+}

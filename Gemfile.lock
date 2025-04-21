@@ -301,7 +301,8 @@ DEPENDENCIES
   citeproc-ruby
   github-pages
   jekyll-scholar
+  jekyll-seo-tag
   liquid
 
 BUNDLED WITH
-   2.2.9
+   2.4.22
