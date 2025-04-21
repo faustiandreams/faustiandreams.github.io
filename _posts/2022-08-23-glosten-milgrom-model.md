@@ -50,7 +50,7 @@ answer the others (and related questions) by the end.
 <br>  
 
 <h2>
-    Few neat remarks    
+    Key Concepts and Intuition  
 </h2>
 
 *Observation* We assume the market maker to be risk neutral and perfectly competitive. 
@@ -67,7 +67,7 @@ Adverse selection (and ultimately the presence of informed traders) has the oppo
 it pushes the bid-ask spread towards large values.
 
 *Observation* The market maker does not know the identity of the market participants, but, for each trade, he knows
-the probability  that the trade comes form an informed trader. He also knows that the informed trader has better
+the probability that the trade comes form an informed trader. He also knows that the informed trader has better
 information than him, so he can use this fact to sequentially infer the true value of the asset. In this setup trades are the mean
 that conveys information to the markets (technically only the informed ones, but since we can't tell them apart we have
 to consider all of them). By observing the order flow the market maker can extract information about
@@ -163,7 +163,7 @@ This method is used in {% cite foucault_market_making_book %}.
 Instead, we proceed by directly computing the ask price from the definition, using the law of total probability and Bayes formula.
 \\[
   \begin{aligned}
-    a_n &= \mathbb{E}[V\vert \Omega_{n_1}, d_n=1]  \\\  
+    a_n &= \mathbb{E}[V\vert \Omega_{n-1}, d_n=1]  \\\  
     & =V^H\mathbb{P}(V=V^H\vert\Omega_{n-1}, d_n=1)+ V^L\mathbb{P}(V=V^L\vert \Omega_{n-1},d_n = 1), \\\  
   \end{aligned}
 \\]
@@ -216,7 +216,7 @@ Analogously we get
 \\[
   b_n = \mu_{n-1} - \frac{\pi\theta_{n-1}(1-\theta_{n-1})}{\pi(1 -\theta_{n-1}) +\frac{1-\pi}{2}}\left(V^H-V^L\right).
 \\]
-We from these formulas we can easily prove $a_n > b_n$.
+From these formulas it is easy to see that $a_n > b_n$.
 The bid-ask spread is 
 \\[
   S_n = a_n - b_n = \pi \theta_{n-1}(1-\theta_{n-1})\left(\frac{1}{\pi\theta_{n-1} + \frac{1-\pi}{2}}+\frac{1}{\pi(1-\theta_{n-1}) + \frac{1-\pi}{2}}\right)\left(V^H - V^L\right).
