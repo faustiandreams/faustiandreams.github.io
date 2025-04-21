@@ -13,7 +13,7 @@ author:
 
 # social
 social:
-  email: true
+  email: false
   behance:
   bitbucket:
   dribbble:
@@ -23,7 +23,7 @@ social:
   google_plus:
   instagram:
   keybase:
-  linkedin:
+  linkedin: enea-shaqiri-60150426b
   pinterest:
   reddit:
   soundcloud:
@@ -31,7 +31,7 @@ social:
   steam:
   tumblr:
   gitlab:
-  twitter:
+  twitter: enea_shaqiri
   vimeo:
   wordpress:
   youtube:
