@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!--- The file head.html is in the _include folder. That file has general information about the fonts, disquis, etc --->
+  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="msvalidate.01" content="0452D264D960E5A377DECF16E94ECC6F" />
+  <meta name="google-site-verification" content="BnNDHvNHeDc_AEC-nDHOw6_x9WNkabtDIi6sqZ3wSVE">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,200&display=swap" rel="stylesheet">
+
+
+
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" type="text/css" href="/assets/css/fontawesome-all.min.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.ico">
+  
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        processEnvironments: true,
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$'], ['\\[','\\]']]
+      }
+    });
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+  <!-- Google Analytics -->
+  
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Parameter calibration in Avellaneda-Stoikov | Faustian Dreams</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Parameter calibration in Avellaneda-Stoikov" />
+<meta name="author" content="Enea Shaqiri" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Calibration procedure for $\Lambda$ and $k$ in the AS model" />
+<meta property="og:description" content="Calibration procedure for $\Lambda$ and $k$ in the AS model" />
+<link rel="canonical" href="https://faustiandreams.github.io/2022-10-03/parameter-calibration-as" />
+<meta property="og:url" content="https://faustiandreams.github.io/2022-10-03/parameter-calibration-as" />
+<meta property="og:site_name" content="Faustian Dreams" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-10-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Parameter calibration in Avellaneda-Stoikov" />
+<script type="application/ld+json">
+{"dateModified":"2022-10-03T00:00:00+00:00","datePublished":"2022-10-03T00:00:00+00:00","description":"Calibration procedure for $\\Lambda$ and $k$ in the AS model","mainEntityOfPage":{"@type":"WebPage","@id":"https://faustiandreams.github.io/2022-10-03/parameter-calibration-as"},"url":"https://faustiandreams.github.io/2022-10-03/parameter-calibration-as","@type":"BlogPosting","author":{"@type":"Person","name":"Enea Shaqiri"},"headline":"Parameter calibration in Avellaneda-Stoikov","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Enea Shaqiri</h2>
+        </a>
+        <ul>
+          <li><a href="/">About</a></li>
+          <li><a href="/posts/">Posts</a></li>
+          <li><a href="/notes/">Notes</a></li>
+          <li><a href="/tags/">Tags</a></li>
+
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <h1 class="post-title">Parameter calibration in Avellaneda-Stoikov</h1>
+
+
+  
+  
+  <div class="tag_list">
+          
+            #<a href= "/tag/market_making">market_making</a>
+            
+          
+            #<a href= "/tag/paper_explained">paper_explained</a>
+            
+          
+        </div>
+  <div class="post_content"><p>The Avellaneda-Stoikov (AS for short) model for market making is a classical example of how to approach market making
+as a stochastic control problem. We will assume familiarity with the framework and 
+focus on estimating the parameters discussed in section “2.5” of <a class="citation" href="#avellaneda_stoikov_mm_model">[1]</a>.</p>
+
+<p>In AS it is assumed that execution of limit orders follows a Poisson distribution with intensities $\lambda^a$ for the ask side and $\lambda^b$ for the bid side. Since orders further away from the best quotes have a lower chance of being executed the intensities are a function of the depth of the limit order. More formally, if $P^a$ is the ask price of the order and $m$ is the mid-price, we set $\delta^a=P^a-m$ and reformulate the previous sentence saying that $\lambda^a$ depends on $\delta^a$, i.e. $\lambda^a=\lambda^a(\delta^a)$. Similarly for the bid side. We are interested in estimating the intensities from the data.</p>
+
+<p>The reasoning in the paper follows from several empirical results about price impact and order density, and it goes as follows:</p>
+
+<blockquote>
+  <p>It has been empirically verified that price impact as a function of order size behaves in the following way
+\[\Delta P\approx\ln(Q),\]
+with $Q$ order size. Thus, if we know the distribution of the order sizes, we can link the incoming orders to the probability of being executed at some depth $\lambda^a(\delta^a)$.
+Following the paper we use the following density for the size of the incoming orders
+\[f^Q(x)\approx x^{-1-\alpha}.\]</p>
+</blockquote>
+
+<p>Let’s put these two facts together. For simplicity (following the paper) we assume a constant frequency $\Lambda$ of buy or sell orders
+We also call $\frac{1}{K}$ the constant such that $\Delta P=\frac{1}{K}\ln(Q)$.</p>
+
+<p>Let’s focus on the ask side. We can write 
+\[
+    \begin{align}
+        \lambda^a(\delta^a)&amp;=\Lambda\mathbb{P}(\Delta P &gt; \delta^a)\\ 
+        &amp;= \Lambda\mathbb{P}(\ln(Q)&gt;K\delta^a) \\ 
+        &amp;= \Lambda\mathbb{P}(Q&gt;e^{K\delta^a})\\ 
+        &amp;= \Lambda\int_{e^{K\delta^a}}^{\infty}x^{-1-\alpha}dx\\ 
+        &amp;= -\frac{\Lambda}{\alpha} \left( x^{-\alpha}\right)\vert^{\infty}_{e^{K\delta^a}}\\ 
+        &amp;= A e^{-k\delta^a}, \label{a}\tag{1}
+    \end{align}
+\]
+where the last equality follows from an easy integration. We set $A=\frac{\Lambda}{\alpha}$ and $k=\alpha K$. Similarly for the bid side.</p>
+
+<p>Thus, in this paper, the intensity has a simple functional form with two parameters $A$ and $k$ to be estimated from historical data.
+The idea then is the following: Estimate both parameters (which are constant), and then use them to get the intensity
+when running the market making algorithm.<br />
+As described in <a class="citation" href="#laruelle_parameter_estimation">[2]</a>, <a class="citation" href="#kch_avellaneda_stoikov">[3]</a> and <a class="citation" href="#naz_avellaneda_stoikov">[4]</a>,
+there are a few ways to calibrate the parameters.
+The idea is to generate points in the $\delta\lambda$-plane using historical data, and fit the parameters 
+to these points. 
+We focus only on the ask side and avoid writing the upper index for simplicity.</p>
+
+<h3>
+    Generating $(\delta, \lambda)$ couples
+</h3>
+<ul>
+  <li>Fix $\delta_i &gt; 0$ and a sequence of timestamps $t_0, \dots, t_n$ and a threshold $T &gt; 0$.</li>
+  <li>For each timestamp $t_j$ record the mid-price at $t_j$ say $m(t_j)$.</li>
+  <li>We want $\bar{t}(\delta_i, t_j)=\inf\{t\in[t_j, T]\ \vert\ \text{the order with price } m(t_j) + \delta_i \text{ is executed}\}$. As observed by Lehalle in <a class="citation" href="#kch_avellaneda_stoikov">[3]</a>
+we need to define what “being executed” means, and deal with some subtleties that can negatively affect the estimate of being executed.
+    <ul>
+      <li>We need to decide how to handle the case where $m(t_j) + \delta_i &lt; \text{best ask}$, where $\text{best ask}$ comes from the actual data.</li>
+      <li>We can consider the order executed when there is a market order with price larger than the current limit order.
+Alternatively, if this data is not available, we can consider the order executed if we observe the mid-price above the order price.</li>
+    </ul>
+  </li>
+  <li>From the previous step, we end up with a set or arrival times $\Gamma(\delta_i)=\{\bar{t}(\delta_i, t_j) - t_j), j=1,\dots,n\}$.
+The Poisson assumption implies the execution times $\bar{t}(\delta_i, t_j)-t_j$ for a fixed $\delta_j$ 
+follow an exponential distribution with mean $\frac{1}{\lambda_i}$, where $\lambda_i = {\lambda(\delta_i)}$. 
+We first compute the average execution time for this depth: 
+${\langle\Gamma(\delta_i)\rangle}=\frac{1}{n}\sum_{j=1}^n \bar{t}(\delta_i, t_j)-t_j$. The estimate for the intensity 
+at depth $\delta_i$ is then the reciprocal of this average time: $λ_i=\frac{1}{\langle\Gamma_(\delta_i)\rangle}$.</li>
+</ul>
+
+<h3>
+    Fitting methods
+</h3>
+
+<p>We can fit the points generated in the previous section using a few different methods.</p>
+<ul>
+  <li>Take the logarithm of both sides of $\lambda(\delta) = A e^{-k\delta}$ and fit a linear regression to it.</li>
+  <li>Consider $(\delta_1, \lambda_1)$ and $(\delta_2, \lambda_2)$ obtained from the procedure in the previous paragraph, with $\delta_1 &gt; \delta_2$.
+Both couples satisfy the equation above, from which it is easy to get 
+\[\begin{cases}&amp;k= \frac{1}{\delta_1 - \delta_2}\log\left(\frac{\lambda_1}{\lambda_2}\right)\\ \\ &amp;A=\lambda_1 e^{k\delta_1}\end{cases}.\]</li>
+</ul>
+
+<p>The second method is more sensitive to outliers and noise in the generation process, as it depends only on two points.</p>
+
+<p><br /></p>
+
+<h2 id="references">References</h2>
+<p class="bibliography"><p><span id="avellaneda_stoikov_mm_model">[1] M. Avellaneda &amp; S. Stoikov, "<a href="https://people.orie.cornell.edu/sfs33/LimitOrderBook.pdf">High-frequency trading in a limit order book</a>", <i>Quantitative Finance</i> (2008).</span></p>
+<p><span id="laruelle_parameter_estimation">[2] S. Laruelle, "<a href="http://events.chairefdd.org/wp-content/uploads/2013/06/CAHIER_MICRO_1.pdf">Faisabilité de l’apprentissage des paramètres d’un algorithme de trading sur des données réelles</a>", (2013).</span></p>
+<p><span id="kch_avellaneda_stoikov">[3] Kch, "<a href="https://quant.stackexchange.com/questions/36073/how-does-one-calibrate-lambda-in-a-avellaneda-stoikov-market-making-problem">How does one calibrate lambda in a Avellaneda-Stoikov market making problem?</a>", <i>Quantitative Finance</i> (2017).</span></p>
+<p><span id="naz_avellaneda_stoikov">[4] Naz, "<a href="https://quant.stackexchange.com/questions/44867/avellaneda-stoikov-empirical-estimation-verification">Avellaneda-Stoikov empirical estimation verification</a>", <i>Quantitative Finance</i> (2019).</span></p></p>
+</div>
+  </br>
+  </br>
+</div>
+    </main>
+
+
+  </body>
+    <footer>
+      <span>
+        &copy; <time datetime="2025-04-21 18:02:44 +0000">2025</time> Enea Shaqiri
+      </span>
+    </footer>
+</html>
