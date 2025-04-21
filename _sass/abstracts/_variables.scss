@@ -9,6 +9,7 @@ $grey-4: #C8C8C8;
 $grey-5: #989898;
 $white: #fff;
 $black: #000;
+$black-google: rgb(27, 28, 29);
 $shadow-color: rgb(0, 0, 14);
 $code-color: #bf616a;
 $ivory: rgb(255,254,244);
@@ -22,15 +23,4 @@ $serif-secondary: Palatino, 'Palatino LT STD', 'Palatino Linotype', 'Book Antiqu
 $sans-serif: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
 $monospaced: Menlo, Monaco, monospace;
 $montserrat: 'Montserrat', sans-serif;
-
-@mixin box-sizing($type: border-box) {
-  -webkit-box-sizing: $type;
-     -moz-box-sizing: $type;
-          box-sizing: $type;
-}
-
-@mixin transition($args...) {
-  -webkit-transition: $args;
-     -moz-transition: $args;
-          transition: $args;
-}
+$google-serif: Google Sans, Helvetica Neue, sans-serif;

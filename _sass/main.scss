@@ -1,15 +1,20 @@
-@import 'base/variables';
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
 @import 'base/base';
-@import 'base/code';
-@import 'base/syntax';
-@import 'base/pagination';
 
 @import 'layouts/layout';
-@import 'layouts/home';
-@import 'layouts/portfolio';
-@import 'layouts/post';
-@import 'layouts/footer';
-@import 'layouts/posts';
-@import 'layouts/tags';
-@import 'layouts/tagpage';
-@import 'layouts/notes';
+
+
+@import 'components/pagination';
+@import 'components/footer';
+@import 'components/post';
+@import 'components/home';
+@import 'components/posts';
+@import 'components/tags';
+@import 'components/tagpage';
+@import 'components/notes';
+
+@import 'components/code';
+@import 'components/syntax';
+@import 'components/portfolio';

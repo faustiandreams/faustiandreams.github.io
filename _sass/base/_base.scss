@@ -1,64 +1,84 @@
+// base/_base.scss
+
+// Apply box-sizing globally
+html {
+  @include box-sizing(border-box);
+}
+
+*, *:before, *:after {
+  @include box-sizing(inherit);
+}
 
 body {
-  color: $default-color;
+  color: $black-google; // Global default color
   margin: 0;
   padding: 0;
+  line-height: 1.3; // Global default line-height
+  font-family: $google-serif; // Global default font
+  min-height: 100vh; // For sticky footer
+  display: flex; // For sticky footer
+  flex-direction: column; // For sticky footer
 }
 
-html {
-  font-family: $montserrat;
-  font-size: 16.2px;
-}
-
-
-/* This is changing the configuration of all the headers. Not sure if that's what I want */
+// Base header styles - will inherit font and color from body/html unless overridden
 h1,h2,h3,h4,h5,h6 {
-  color: $default-shade;
-  font-family: $montserrat;
+  color: $black-google; // Or inherit: color: inherit;
+  font-family: $google-serif; // Or inherit: font-family: inherit;
   line-height: normal;
-  // Add vertical margins around headings for visual separation
-  margin-top: 2rem; // More space above headings
-  margin-bottom: 1rem; // Some space below headings before text starts
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
+// Base paragraph styles - will inherit font, color, and line-height from body/html
 p {
-  color: $default-shade;
-  font-family: $montserrat;
-  line-height: 1.6;
   margin-bottom: 1.5rem;
-
+  // Removed explicit font-family, color, line-height to inherit from body/html
+  // margin-left and margin-right removed - rely on container for width
 }
 
-ul {
-  padding: 0.1rem 0.2rem 0.2rem 0.7rem;
+// Base list styles - will inherit font, color from body/html
+ul, ol {
+   // Removed explicit font-family, color to inherit from body/html
+   // Removed explicit margin-left and margin-right - rely on container for width
+   padding: 0 0 0 1.5rem; // Standard list indentation
 }
 
-/* The comment below is wrong. The purpose of the line below is to configure cliccable stuff apparaence  */
-/* Refers to the names of the posts. This config is overriding the _layout.css a. Not sure this is needed here, as the layout is shared*/
+li {
+  margin-bottom: 0.3rem;
+}
 
+
+// Base link styles - will inherit font from body/html
 a {
-  color: $default-color;
+  color: $default-color; // Keep a distinct link color or inherit: color: inherit;
   text-decoration: none;
+  // Removed explicit font-family to inherit from body/html
 }
 
 
 blockquote {
   border-left: .25rem solid $grey-2;
-  color: $grey-1;
+  color: $grey-1; // Blockquotes often have a slightly different text color
   margin: .8rem 0;
   padding: .5rem 1rem;
 
   p:last-child {
     margin-bottom: 0;
   }
+
+  @media (min-width: 600px) {
+    padding: 0 5rem 0 1.25rem;
+  }
 }
 
 img {
   display: block;
   margin: 0 0 1rem;
-  max-width: 100%;
+  max-width: 100%; // Ensure responsiveness
+  height: auto; // Maintain aspect ratio
 }
 
 td {
   vertical-align: top;
+   // Will inherit font and color from body/html
 }
