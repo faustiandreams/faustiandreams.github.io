@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!--- The file head.html is in the _include folder. That file has general information about the fonts, disquis, etc --->
+  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="msvalidate.01" content="0452D264D960E5A377DECF16E94ECC6F" />
+  <meta name="google-site-verification" content="BnNDHvNHeDc_AEC-nDHOw6_x9WNkabtDIi6sqZ3wSVE">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,200&display=swap" rel="stylesheet">
+
+
+
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" type="text/css" href="/assets/css/fontawesome-all.min.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.ico">
+  
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        processEnvironments: true,
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$'], ['\\[','\\]']]
+      }
+    });
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+  <!-- Google Analytics -->
+  
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Stableswap pricing mechanism | Faustian Dreams</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Stableswap pricing mechanism" />
+<meta name="author" content="Enea Shaqiri" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="AMM design for efficient stablecoin swaps" />
+<meta property="og:description" content="AMM design for efficient stablecoin swaps" />
+<link rel="canonical" href="http://localhost:4000/2024-10-31/curve-v1-math" />
+<meta property="og:url" content="http://localhost:4000/2024-10-31/curve-v1-math" />
+<meta property="og:site_name" content="Faustian Dreams" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-10-31T00:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Stableswap pricing mechanism" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","author":{"@type":"Person","name":"Enea Shaqiri"},"headline":"Stableswap pricing mechanism","dateModified":"2024-10-31T00:00:00+01:00","datePublished":"2024-10-31T00:00:00+01:00","url":"http://localhost:4000/2024-10-31/curve-v1-math","description":"AMM design for efficient stablecoin swaps","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2024-10-31/curve-v1-math"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/">
+          <h2 class="nav-title">Enea Shaqiri</h2>
+        </a>
+        <ul>
+          <li><a href="/">About</a></li>
+          <li><a href="/posts/">Posts</a></li>
+          <li><a href="/notes/">Notes</a></li>
+          <li><a href="/tags/">Tags</a></li>
+
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <h1 class="post-title">Stableswap pricing mechanism</h1>
+
+
+  
+  
+  <div class="tag_list">
+          
+            #<a href= "/tag/amm">amm</a>
+            
+          
+            #<a href= "/tag/defi">defi</a>
+            
+          
+        </div>
+  <div class="post_content"><p>Curve is a defi exchange that in <a class="citation" href="#curve_original_paper">[1]</a> introduced a novel mechanism for efficient stablecoin swap,
+called Stableswap (also referred to as Curve V1).
+The reason behind the success of Curve for stablecoin swaps is that Stableswap has drastically lower slippage than competitors.<br />
+In this article we look into the key concepts and math behind this pricing mechanism.</p>
+
+<p><br /></p>
+
+<h2>
+    Notation and concepts
+</h2>
+<p>Given $N$ stablecoins, let $x_j$ be the amount of the $j-th$ stablecoin in the pool. We use the following notation
+$\boldsymbol{x}=(x_1, \dots, x_N)$.</p>
+
+<p>The <strong>equilibrium point</strong> of the pool is defined as the vector $\hat{\boldsymbol{x}} = (\hat{x_1}, \dots, \hat{x_N})$ s.t. each entry has the
+same dollar value. For stablecoins, when all of them are pegged, the equilibrium point is a vector with equal entries.</p>
+
+<p>We define the total number of assets in the pool at equilibrium as $\hat{D}:=\hat{x_1}+\dots, +\hat{x_N} = N\cdot \hat{x_1}$.
+We call the vector $(\hat{x_1}, \dots, \hat{x_N}, \hat{D})$ <strong>equilibrium configuration</strong>. We point out
+that $\boldsymbol{x}$ and $D$ have different roles, and it is common to
+think of $D$ as derived from $\hat{\boldsymbol{x}}$.<br />
+Usually $D$ is used as a proxy for the liquidity in the pool. In the equilibrium case described above, $D$ is the 
+total dollar value of the pool (assuming no depegs).</p>
+
+<p>We introduce the constant product invariant function and the constant sum invariant function. 
+They are both functions of the assets in the pool and some parameters.</p>
+
+<p>The concept of invariant function is useful because the set of its zeros 
+defines a curve (hypersurface), which represents the set of admissible 
+configurations for that pool (both for the reserves and the parameters). 
+Interactions with the pool change the value of the reserves or parameters. The new state of the pool after the interaction
+<strong>must</strong> be an admissible configuration.<br />
+Invariant functions are also called bonding curves in the literature, because for a pool with two assets they define curves.</p>
+
+<p>The <strong>constant product invariant</strong> is 
+\[I_P(x_1,\dots x_N, D):= \left(\prod_{i=1}^N x_i\right) - \left(\frac{D}{N}\right)^N.\]
+This invariant is used in liquidity pools like Uniswap V2. It has the property of being defined in the whole positive
+hyperspace (all $x_i$ positive). The slippage associated with a swap can be quite large (especially for stablecoins).</p>
+
+<p>The <strong>constant sum invariant</strong> is 
+\[I_S(x_1,\dots x_N, D):= \left(\sum_{i=1}^N x_i\right) - D.\]
+This invariant has no slippage, but it is not defined on the whole positive hyperspace. The reason is that
+this invariant defines a hyperplane, which intersects the coordinate axis. The meaning of the intersection points,
+$x_i=0$, is that the asset is completely depleted from the pool. We want to avoid this property, as the main goal here
+is to provide liquidity and allow two sided trading.</p>
+
+<p>We observe that $(\hat{x_1}, \dots, \hat{x_N}, \hat{D})$ makes both functions $0$, meaning this point is an 
+admissible configuration for both pools simultaneously. Moreover, this is the only point with such property.</p>
+
+<p>We define the <strong>dynamic amplification factor</strong> 
+\[\psi(x_1,\dots x_N, D; A):= A \cdot \left(\frac{D}{N}\right)^{-N} \left(\prod_{i=1}^N x_i\right), \]
+where $A$ is a positive constant set by the protocol.<br />
+If we plug the equilibrium configuration in this function, we get $\psi(\hat{x_1},\dots \hat{x_N}, \hat{D}; A)= A$<br />
+We call A the static amplification factor; its role in controlling the curve’s shape is discussed below</p>
+
+<h2>
+    Curve V1 invariant
+</h2>
+<p>We define Curve invariant function by using $\psi$ to interpolate 
+between the constant sum invariant and the constant product invariant.
+We define
+\[\boxed{I(x_1,\dots x_N, D; A):= D^{N-1}\cdot \psi(x_1,\dots x_N, D; A)\cdot I_S(x_1,\dots x_N, D) + I_P(x_1,\dots x_N, D)}\]
+We make the following remarks</p>
+<ul>
+  <li>Trivially, the equilibrium configuration is admissible for this invariant.</li>
+  <li>This formulation is mathematically equivalent to the formula presented in the original paper.</li>
+  <li>For $\psi\rightarrow 0$ we have $I\rightarrow I_P$. For $\psi\rightarrow \infty$ we have $I\rightarrow I_S$.</li>
+  <li>The original paper mentions that a large $A$ looks like Uniswap with
+leverage. While this might be a useful way to think about it, the role of $A$ is to amplify the impact of the constant 
+sum portion of the formula. More weight on the constant sum part means less slippage.</li>
+  <li>We already mentioned that $\psi = A $ on the equilibrium configuration. With a bit more work it is possible to show
+that outside of the equilibrium configuration $\psi&lt;A$ (AM-GM inequality). So we get the maximum amplification effect (minimum slippage)
+when the pool is balanced. This can be thought of as “liquidity is more concentrated around the equilibrium point”.</li>
+</ul>
+
+<h2>
+    Swaps
+</h2>
+<p>In this section, wlog, we assume $N=2$, to focus on the mechanics of a swap between two tokens.
+Say we want to sell $\Delta x_1$ of asset 1 to the pool. The pool computes the amount $\Delta x_2$ it needs to return 
+us to perform the swap. We ignore fees.</p>
+
+<p>To compute $\Delta x_2$ we use the invariant formula twice:</p>
+<ul>
+  <li>First, given $x_1$, $x_2$, and setting the curve invariant to $0$ it is possible to solve for the current value of $D$.
+It is not possible to get an algebraic formulation for $D$, but the equation can be solved the equation numerically.
+The liquidity pool uses Newton’s method and clever re-writing to save on gas fees when solving numerically onchain.</li>
+  <li>Now that $D$ is available the pool assumes $D$ stays constant <em>during the swap</em>. This is similar to how the liquidity
+parameter does not change on Uniswap V2 during a swap. $D$ and $x_1+\Delta x_1$ are plugged in the invariant equation 
+which solved with respect to $x_2$ this time (again, numerically).</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="references">References</h2>
+<p class="bibliography"><p><span id="curve_original_paper">[1] M. Egorov, "<a href="https://curve.fi/files/stableswap-paper.pdf">StableSwap - efficient mechanism for Stablecoin liquidity</a>", <i>curve.fi</i> (2019).</span></p></p>
+
+</div>
+  </br>
+  </br>
+</div>
+    </main>
+
+
+  </body>
+    <footer>
+      <span>
+        &copy; <time datetime="2025-05-14 17:38:52 +0200">2025</time> Enea Shaqiri
+      </span>
+    </footer>
+</html>
