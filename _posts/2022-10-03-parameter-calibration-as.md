@@ -70,9 +70,11 @@ We can fit the points generated in the previous section using a few different me
 - Take the logarithm of both sides of $\lambda(\delta) = A e^{-k\delta}$ and fit a linear regression to it.
 - Consider $(\delta_1, \lambda_1)$ and $(\delta_2, \lambda_2)$ obtained from the procedure in the previous paragraph, with $\delta_1 > \delta_2$.
   Both couples satisfy the equation above, from which it is easy to get 
-  \\[\begin{cases}&k= \frac{1}{\delta_1 - \delta_2}\log\left(\frac{\lambda_1}{\lambda_2}\right)\\\ \\\ &A=\lambda_1 e^{k\delta_1}\end{cases}.\\]
+  \\[\begin{cases}&k= \frac{1}{\delta_1 - \delta_2}\log\left(\frac{\lambda_2}{\lambda_1}\right)\\\ \\\ &A=\lambda_1 e^{k\delta_1}\end{cases}.\\]
 
-The second method is more sensitive to outliers and noise in the generation process, as it depends only on two points.
+The second method is more sensitive to outliers and noise in the data generation process, as it depends only on two points. 
+The regression has the advantage of using all the points and getting a more robust estimate. The same procedure can be applied to 
+the bid side. While the steps are the same, but in general the parameters for ask and bid will be different.
 
 <br>  
 
