@@ -1,37 +1,55 @@
-# DISABLED - Using manual deployment via deploy.sh script instead
-# The commonmarker gem has compatibility issues in GitHub Actions
-# To deploy: run ./deploy.sh locally
+name: Build and Deploy to Github Pages
 
-# name: Build and Deploy to Github Pages
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
-# on:
-#   push:
-#     branches:
-#       - main  # Here source code branch is `master`, it could be other branch
-#   workflow_dispatch:
-#     branches:
-#       - main
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-# jobs:
-#   build_and_deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v4
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
-#       - uses: jeffreytse/jekyll-deploy-action@v0.6.0
-#         with:
-#           provider: 'github'         # Default is github
-#           token: ${{ secrets.GITHUB_TOKEN }} # It's your Personal Access Token(PAT)
-#           ssh_private_key: ''        # It's your SSH private key (SSH approach)
-#           repository: 'faustiandreams/faustiandreams.github.io'             # Default is current repository
-#           branch: 'gh-pages'         # Default is gh-pages for github provider
-#           jekyll_src: './'           # Default is root directory
-#           jekyll_cfg: '_config.yml'  # Default is _config.yml
-#           jekyll_baseurl: ''         # Default is according to _config.yml
-#           ruby_ver: '3.2.0'               # Ruby 3.3.8 has compatibility issues with commonmarker 0.17.13
-#           bundler_ver: ''            # Default is compatible bundler version (~>2.5.0)
-#           cname: ''                  # Default is to not use a cname
-#           actor: ''                  # Default is the GITHUB_ACTOR
-#           pre_build_commands: ''     # Installing additional dependencies (Arch Linux)
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
+
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
 
 
