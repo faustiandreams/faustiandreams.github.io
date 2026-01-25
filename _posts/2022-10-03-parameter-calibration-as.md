@@ -3,11 +3,12 @@ layout: post
 tags: market_making paper_explained
 mathjax: true
 excerpt: Calibration procedure for $\Lambda$ and $k$ in the AS model
+description: Practical guide to parameter estimation in the Avellaneda-Stoikov market making model. Learn how to calibrate order arrival intensities using historical data, estimate the parameters A and k, and implement the calibration procedure for optimal market making strategies.
 title: "Parameter calibration in Avellaneda-Stoikov"
 ---
 
 The Avellaneda-Stoikov (AS for short) model for market making is a classical example of how to approach market making
-as a stochastic control problem. We will assume familiarity with the framework and 
+as a stochastic control problem. Unlike information-based models such as the [Glosten Milgrom model]({{ site.baseurl }}{% link _posts/2022-08-23-glosten-milgrom-model.md %}) or the [Kyle model]({{ site.baseurl }}{% link _posts/2022-09-10-kyle-model.md %}), which focus on strategic behavior and adverse selection, the AS model takes an optimal control approach to determine bid-ask spreads. We will assume familiarity with the framework and 
 focus on estimating the parameters discussed in section "2.5" of {% cite avellaneda_stoikov_mm_model %}.
 
 In AS it is assumed that execution of limit orders follows a Poisson distribution with intensities $\lambda^a$ for the ask side and $\lambda^b$ for the bid side. Since orders further away from the best quotes have a lower chance of being executed the intensities are a function of the depth of the limit order. More formally, if $P^a$ is the ask price of the order and $m$ is the mid-price, we set $\delta^a=P^a-m$ and reformulate the previous sentence saying that $\lambda^a$ depends on $\delta^a$, i.e. $\lambda^a=\lambda^a(\delta^a)$. Similarly for the bid side. We are interested in estimating the intensities from the data. 

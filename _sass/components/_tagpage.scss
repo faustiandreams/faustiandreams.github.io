@@ -1,5 +1,7 @@
 .tag{
   margin-left: 31rem;
+  max-width: 50rem; // Prevent text from going to edge of screen
+  margin-right: 2rem; // Add right margin for breathing room
 
   a{
     color: $grey-5;
@@ -10,6 +12,11 @@
     }
   }
   color: black;
+
+  // Add word wrapping for long text
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
   .tag-title {
     margin-top: 3rem;
     font-size: 1.8rem;
@@ -17,9 +24,59 @@
     margin-left: -31rem;
     color: black;
     margin-bottom: 3.5rem;
+  }
 
+  .tag-excerpt {
+    display: block;
+    color: $grey-5;
+    font-size: 0.95rem;
+    margin-top: 0.3rem;
+    line-height: 1.4;
+    max-width: 100%; // Ensure excerpt doesn't overflow
+  }
+
+  // Better list styling
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    margin-bottom: 1.5rem;
+    max-width: 100%; // Prevent list items from overflowing
+  }
+
+  // Mobile responsiveness for tag pages
+  @media (max-width: 767px) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-width: none; // Full width on mobile
+
+    .tag-title {
+      margin-left: 0;
+      font-size: 1.5rem;
+    }
+
+    a {
+      font-size: 1.1rem;
+    }
+
+    .tag-excerpt {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    margin-left: 10rem;
+    max-width: 40rem; // Narrower on tablets
+
+    .tag-title {
+      margin-left: -10rem;
+    }
   }
 }
+
+
 
 
 

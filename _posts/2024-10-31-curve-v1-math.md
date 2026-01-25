@@ -3,6 +3,7 @@ layout: post
 mathjax: true
 tags: defi amm
 excerpt: AMM design for efficient stablecoin swaps
+description: Deep dive into Curve's Stableswap pricing mechanism, exploring the mathematical foundations of constant product and constant sum invariants, and how Curve V1 achieves drastically lower slippage for stablecoin swaps through its innovative hybrid approach.
 title: "Stableswap pricing mechanism"
 ---
 

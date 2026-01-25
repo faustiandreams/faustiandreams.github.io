@@ -1,5 +1,6 @@
 ---
 layout: tagpage
-title: "Tag: paper_explained"
-tag: paper_explained
+title: "Tag: market_making"
+tag: market_making
+mathjax: true
 ---

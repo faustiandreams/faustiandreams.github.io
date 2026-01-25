@@ -54,6 +54,12 @@ a {
   color: $default-color; // Keep a distinct link color or inherit: color: inherit;
   text-decoration: none;
   // Removed explicit font-family to inherit from body/html
+
+  // Better touch targets for mobile
+  @media (max-width: 767px) {
+    padding: 0.3rem 0;
+    display: inline-block;
+  }
 }
 
 

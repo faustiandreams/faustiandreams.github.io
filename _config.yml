@@ -4,6 +4,15 @@ baseurl: ""
 url: "https://faustiandreams.github.io"
 google_analytics: # Tracking ID, e.g. "UA-000000-01"
 repository: 'faustiandreams/faustiandreams.github.io'
+
+# SEO settings
+description: >-
+  Technical blog exploring mathematical finance, algorithmic trading, deep learning,
+  and quantitative modeling. From pure mathematics to financial markets.
+tagline: Convincing the Universe to reveal me its secrets
+logo: /assets/img/profile.jpg
+lang: en_US
+
 # Author
 author:
   name: Enea Shaqiri

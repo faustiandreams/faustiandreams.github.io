@@ -1,5 +1,11 @@
 .posts {
     margin-top: 2.7rem;
+    padding: 0 1rem; // Add padding for mobile
+
+    @media (min-width: 768px) {
+      padding: 0;
+    }
+
     .post_titles {
         a {
             color: $wine;
@@ -7,6 +13,12 @@
             left: 50%;
             right: 50%;
             width: fit-content;
+            font-size: 1.2rem; // Base size for mobile
+
+            @media (min-width: 768px) {
+              font-size: 1.5rem;
+            }
+
             .title_line {
                 position: relative;
                 margin: 0.05rem 0 0.75rem 0; // Gap above line is 0.05rem, gap below line is 0.24rem
@@ -23,8 +35,18 @@
         }
     }
     .post_excerpt {
-        font-size: 17.6px;
-            color: $lighter-black;
+        font-size: 15px; // Smaller for mobile
+        color: $lighter-black;
+        padding: 0 0.5rem;
+
+        @media (min-width: 768px) {
+          font-size: 17px;
+          padding: 0;
+        }
+
+        @media (min-width: 1024px) {
+          font-size: 17.6px;
+        }
 
     }
     text-align: center;

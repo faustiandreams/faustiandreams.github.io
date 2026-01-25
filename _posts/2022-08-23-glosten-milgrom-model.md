@@ -3,6 +3,7 @@ layout: post
 tags: market_making paper_explained
 mathjax: true
 excerpt: How do the markets digest information? Introduction to the Glosten Milgrom model
+description: Comprehensive introduction to the Glosten Milgrom model of information-based trading. Learn how markets digest new information through the interaction of informed traders, uninformed traders, and market makers. Understand bid-ask spread dynamics and price discovery mechanisms.
 title: "Glosten Milgrom model"
 ---
 
@@ -290,11 +291,11 @@ model does not satisfy the strong form of the EMH (in general), it does satisfy 
 
 It is clear that the model is highly stylized and some hypothesis are too strong. Let's go through some of them.  
 The model assumes the value of the asset to be fixed within the period and all informed traders to know it with 
-certainty, which is not very realistic. In the real world even informed traders can have different estimates for the 
+certainty, which is not very realistic. We have extended this assumption in [this post]({{ site.baseurl }}{% link _posts/2022-08-27-gm-model-imperfectly-informed-traders.md %}) to allow for imperfectly informed traders. In the real world even informed traders can have different estimates for the 
 value of the asset. Interestingly this would imply that the bid-ask spread is being paid also by some informed traders, 
 when there is disagreement about the value of the asset.  
 The trade size is assumed to be $1$, which greatly simplifies 
-the computation, but ignores the importance of volume as source of information.
+the computation, but ignores the importance of volume as source of information. For a model that incorporates strategic behavior and optimal trading strategies, see the [Kyle model]({{ site.baseurl }}{% link _posts/2022-09-10-kyle-model.md %}).
  
 
 <br>   

@@ -3,6 +3,7 @@ layout: post
 tags: market_making
 mathjax: true
 excerpt: Extension of the Glosten Milgrom model to allow for uncertain informed traders
+description: Extension of the classic Glosten Milgrom model to incorporate imperfect information. Understand how signal accuracy affects bid-ask spreads, explore the mathematics of probabilistic trading signals, and see how the model bridges perfectly informed and uninformed trader behavior.
 title: "Glosten Milgrom with imperfectly informed traders"
 ---
 
@@ -82,3 +83,5 @@ better informed the informed trader is, the wider the market maker should quote 
 As promised at the beginning, by setting $\rho=1$ we recover the perfectly informed case. 
 Interestingly, for $\rho\rightarrow\frac{1}{2}$ we have $S_n\rightarrow0$. This shows that in the absence of
 better informed traders perfect competition between market makers would drive the spreads to $0$.
+
+For another perspective on strategic behavior in markets with asymmetric information, see the [Kyle model]({{ site.baseurl }}{% link _posts/2022-09-10-kyle-model.md %}), which analyzes equilibrium strategies when informed traders act strategically to hide their information advantage.

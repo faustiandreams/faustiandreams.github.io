@@ -28,10 +28,13 @@ pre code {
   line-height: 1.4;
   margin: 0 0 1rem;
   padding: 1rem;
+  overflow-x: auto; // Enable horizontal scroll on mobile
+  -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
 
   pre {
     margin-bottom: 0;
     overflow-x: auto;
+    max-width: 100%; // Prevent overflow
   }
 
   .lineno {

@@ -1,0 +1,70 @@
+// components/_navigation-mobile.scss
+// Mobile-optimized navigation
+
+.nav {
+  // Keep existing base styles from _navigation.scss
+
+  // Mobile-first improvements
+  &-container {
+    width: 90%; // More space on mobile
+
+    @media (min-width: 768px) {
+      width: 85%;
+    }
+
+    @media (min-width: 1024px) {
+      width: 80%;
+    }
+  }
+
+  &-title {
+    font-size: 1.3rem; // Smaller on mobile
+    margin: 1rem 0.5rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.5rem;
+      margin: 1rem;
+    }
+  }
+
+  ul {
+    margin: -3rem 0 0; // Adjusted for mobile
+    list-style: none;
+    padding: 0;
+
+    @media (min-width: 768px) {
+      margin: -3.43rem 0 0;
+    }
+  }
+
+  li {
+    padding: 1rem 0 0.1rem 0.8rem; // Reduced padding on mobile
+    font-size: 0.9rem;
+
+    // Better touch targets for mobile
+    a {
+      padding: 0.5rem;
+      display: inline-block;
+      min-height: 44px; // iOS recommended touch target
+      line-height: 1.5;
+    }
+
+    @media (min-width: 768px) {
+      padding: 1rem 0 0.1rem 1.3rem;
+      font-size: 1rem;
+
+      a {
+        padding: 0;
+        min-height: auto;
+      }
+    }
+
+    &:last-child {
+      padding-right: 0.5rem;
+
+      @media (min-width: 768px) {
+        padding-right: 0;
+      }
+    }
+  }
+}

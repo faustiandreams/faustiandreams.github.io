@@ -3,6 +3,7 @@ layout: post
 tags: market_making paper_explained
 mathjax: true
 excerpt: Introduction to equilibrium strategies for market participants
+description: Analysis of Kyle's continuous auction model for strategic trading. Explore how informed traders and market makers reach equilibrium, understand optimal trading strategies in the presence of asymmetric information, and learn about price impact and market depth dynamics.
 title: "Kyle model"
 ---
 
@@ -133,6 +134,8 @@ However, like any theoretical model, the Kyle model relies on significant simpli
 - **Specific Distributions**: The reliance on Gaussian distributions for V and u is mathematically convenient but doesn't capture the fatter tails often observed in financial data.
 
 Despite these simplifications, the Kyle model remains incredibly valuable. It provides a clear and tractable illustration of fundamental market microstructure dynamics: how strategic information trading occurs, how information gets impounded into prices through order flow, and what determines the sensitivity of price to volume (price impact/market depth). It serves as a crucial theoretical benchmark and a building block for understanding more complex real-world market phenomena. The concepts of strategic information revelation and price impact derived from Kyle are cornerstones of modern market microstructure theory.
+
+For practical implementation of market making strategies, see our discussion of [parameter calibration in the Avellaneda-Stoikov model]({{ site.baseurl }}{% link _posts/2022-10-03-parameter-calibration-as.md %}), which takes a different optimal control approach to determining bid-ask spreads.
 
 <br>
 

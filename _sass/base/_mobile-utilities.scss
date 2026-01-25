@@ -1,0 +1,73 @@
+// Mobile utility styles for better mobile experience
+
+// Prevent text size adjustment on orientation change
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+// Better tap highlighting
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+// Ensure tables are scrollable on mobile
+table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    display: table;
+    overflow-x: visible;
+  }
+}
+
+// Math equations (MathJax) horizontal scroll on mobile
+.MathJax_Display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+// Ensure images don't break layout on mobile
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Better blockquote padding on mobile
+blockquote {
+  padding: 0.5rem 1rem;
+  margin: 0.8rem 0.5rem;
+
+  @media (min-width: 600px) {
+    padding: 0 5rem 0 1.25rem;
+    margin: 0.8rem 0;
+  }
+}
+
+// Prevent horizontal scroll
+body {
+  overflow-x: hidden;
+}
+
+// Better spacing for lists on mobile
+ul, ol {
+  margin-left: 0;
+  padding-left: 2rem;
+
+  @media (min-width: 768px) {
+    padding-left: 1.5rem;
+  }
+}
+
+// Touch-friendly buttons and interactive elements
+button,
+input[type="submit"],
+input[type="button"] {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.5rem 1rem;
+}

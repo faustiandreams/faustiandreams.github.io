@@ -38,8 +38,12 @@
       // Removed margin-left/right - using max-width on parent instead
       text-align: left; // Align text left within the centered max-width container
       color: $lighter-black;
-      line-height: 1.6;
+      line-height: 1.7; // Better line-height for mobile reading
       margin-bottom: 1.5rem;
+
+      @media (min-width: 1024px) {
+        line-height: 1.6;
+      }
     }
 
     ul, ol {
@@ -48,7 +52,11 @@
       text-align: left; // Align list items left within the centered max-width container
       color: $lighter-black;
       padding-left: 1.5rem; // Ensure standard list indentation
-      line-height: 1.6;
+      line-height: 1.7; // Better line-height for mobile
+
+      @media (min-width: 1024px) {
+        line-height: 1.6;
+      }
     }
 
     li {
