@@ -1,0 +1,15 @@
+# robots.txt for faustiandreams.github.io
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow admin and config files
+Disallow: /_site/
+Disallow: /_includes/
+Disallow: /_layouts/
+Disallow: /_sass/
+Disallow: /_plugins/
+
+# Sitemap location
+Sitemap: https://faustiandreams.github.io/sitemap.xml
