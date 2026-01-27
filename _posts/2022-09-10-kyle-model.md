@@ -135,7 +135,7 @@ However, like any theoretical model, the Kyle model relies on significant simpli
 
 Despite these simplifications, the Kyle model remains incredibly valuable. It provides a clear and tractable illustration of fundamental market microstructure dynamics: how strategic information trading occurs, how information gets impounded into prices through order flow, and what determines the sensitivity of price to volume (price impact/market depth). It serves as a crucial theoretical benchmark and a building block for understanding more complex real-world market phenomena. The concepts of strategic information revelation and price impact derived from Kyle are cornerstones of modern market microstructure theory.
 
-For practical implementation of market making strategies, see our discussion of [parameter calibration in the Avellaneda-Stoikov model]({{ site.baseurl }}{% link _posts/2022-10-03-parameter-calibration-as.md %}), which takes a different optimal control approach to determining bid-ask spreads.
+For practical implementation of market making strategies, see our discussion of [parameter calibration in the Avellaneda-Stoikov model]({{ site.baseurl }}{% link _posts/2022-10-03-avellaneda-stoikov-calibration.md %}), which takes a different optimal control approach to determining bid-ask spreads.
 
 <br>
 

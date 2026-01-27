@@ -54,12 +54,6 @@ a {
   color: $default-color; // Keep a distinct link color or inherit: color: inherit;
   text-decoration: none;
   // Removed explicit font-family to inherit from body/html
-
-  // Better touch targets for mobile
-  @media (max-width: 767px) {
-    padding: 0.3rem 0;
-    display: inline-block;
-  }
 }
 
 
@@ -88,4 +82,28 @@ img {
 td {
   vertical-align: top;
    // Will inherit font and color from body/html
+}
+
+// Visually hidden but accessible to screen readers
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Page title styles
+.posts-title,
+.tags-title,
+.portfolio-page-title {
+  text-align: center;
+  font-family: $google-serif;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: $lighter-black;
 }

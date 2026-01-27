@@ -53,6 +53,7 @@
       color: $lighter-black;
       padding-left: 1.5rem; // Ensure standard list indentation
       line-height: 1.7; // Better line-height for mobile
+      list-style-position: outside;
 
       @media (min-width: 1024px) {
         line-height: 1.6;
@@ -61,6 +62,20 @@
 
     li {
       margin-bottom: 0.5rem;
+      display: list-item;
+      width: 100%;
+
+      // Nested lists inside list items
+      ul, ol {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        width: 100%;
+
+        li {
+          width: 100%;
+        }
+      }
     }
   }
 

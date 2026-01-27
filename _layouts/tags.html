@@ -6,6 +6,7 @@ layout: base
 
 <!--- There is a class definition here. This class will be customizable in the _layout/_posts, using the syntax .class_name {} --->
 <div class="tags">
+  <h1 class="tags-title">All Tags</h1>
   {% assign sorted_tags =  site.posts | map: 'tags' | join: ','  | split: ',' | uniq | sort %}
     {% for tag in sorted_tags %}
     {% assign counter = 0 %}
