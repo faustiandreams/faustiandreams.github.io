@@ -1,7 +1,8 @@
 .tag{
   margin-left: 31rem;
-  max-width: 50rem; // Prevent text from going to edge of screen
-  margin-right: 2rem; // Add right margin for breathing room
+  max-width: 50rem;
+  margin-right: 2rem;
+  font-family: $montserrat;
 
   a{
     color: $grey-5;
@@ -28,11 +29,11 @@
 
   .tag-excerpt {
     display: block;
-    color: $grey-5;
+    color: black;
     font-size: 0.95rem;
     margin-top: 0.3rem;
     line-height: 1.4;
-    max-width: 100%; // Ensure excerpt doesn't overflow
+    max-width: 100%;
   }
 
   // Better list styling
@@ -43,14 +44,14 @@
 
   li {
     margin-bottom: 1.5rem;
-    max-width: 100%; // Prevent list items from overflowing
+    max-width: 100%;
   }
 
   // Mobile responsiveness for tag pages
   @media (max-width: 767px) {
     margin-left: 1rem;
     margin-right: 1rem;
-    max-width: none; // Full width on mobile
+    max-width: none;
 
     .tag-title {
       margin-left: 0;
@@ -68,15 +69,10 @@
 
   @media (min-width: 768px) and (max-width: 1023px) {
     margin-left: 10rem;
-    max-width: 40rem; // Narrower on tablets
+    max-width: 40rem;
 
     .tag-title {
       margin-left: -10rem;
     }
   }
 }
-
-
-
-
-
