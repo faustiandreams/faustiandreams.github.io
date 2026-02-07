@@ -2,7 +2,7 @@
   margin-left: 31rem;
   max-width: 50rem;
   margin-right: 2rem;
-  font-family: $montserrat;
+  font-family: inherit;
 
   a{
     color: $grey-5;
@@ -38,8 +38,8 @@
 
   // Better list styling
   ul {
-    list-style: none;
-    padding-left: 0;
+    list-style: disc;
+    padding-left: 1.5rem;
   }
 
   li {
