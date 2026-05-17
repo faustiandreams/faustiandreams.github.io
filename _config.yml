@@ -20,6 +20,11 @@ author:
   email: enea105@hotmail.it
   selfie: assets/img/profile.jpg
 
+# Twitter Card (used by jekyll-seo-tag)
+twitter:
+  username: enea_shaqiri
+  card: summary_large_image
+
 # social
 social:
   email: false
@@ -65,6 +70,8 @@ plugins:
   - jekyll-paginate
   - jekyll-scholar
   - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
 
 scholar:
   style: custom
@@ -73,6 +80,14 @@ scholar:
   bibliography_item_tag: p
   bibtex_filters:
     - latex
+
+# Default social share image for posts (jekyll-seo-tag)
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      image: /assets/img/profile.jpg
 
 # Permalinks
 permalink: /:year-:month-:day/:title

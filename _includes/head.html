@@ -16,6 +16,9 @@
 
   <!-- SEO: Let jekyll-seo-tag handle title, description, canonical, Open Graph, Twitter Cards -->
   {% seo %}
+  {% if page.noindex %}
+  <meta name="robots" content="noindex">
+  {% endif %}
 
   <!-- CSS -->
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">

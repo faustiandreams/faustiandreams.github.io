@@ -4,8 +4,8 @@
 
 set -e  # Exit on error
 
-echo "🔨 Building Jekyll site locally..."
-bundle exec jekyll build
+echo "🔨 Building Jekyll site locally (production)..."
+JEKYLL_ENV=production bundle exec jekyll build
 
 echo "📁 Preparing gh-pages branch..."
 
