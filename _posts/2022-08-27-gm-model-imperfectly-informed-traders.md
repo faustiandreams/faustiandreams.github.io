@@ -3,8 +3,8 @@ layout: post
 tags: market_making
 mathjax: true
 excerpt: How signal accuracy in the Glosten–Milgrom model widens the bid–ask spread (noisy informed traders)
-description: "Glosten–Milgrom with a noisy informed signal: how signal accuracy ρ enters the bid–ask spread, why a sharper signal widens it, and how ρ=1 recovers the perfectly informed case."
-title: "Glosten–Milgrom with Imperfectly Informed Traders: Signal Accuracy & Bid–Ask Spread"
+description: "How signal accuracy ρ in the Glosten–Milgrom model widens the bid–ask spread, with ρ=1 recovering the perfectly informed case and ρ→½ collapsing it."
+title: "Glosten–Milgrom: Imperfect Information"
 ---
 
 We extend the GM model presented [here]({{ site.baseurl }}{% link _posts/2022-08-23-glosten-milgrom-model.md %})

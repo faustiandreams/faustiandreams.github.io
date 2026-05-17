@@ -3,8 +3,8 @@ layout: post
 tags: market_making paper_explained
 mathjax: true
 excerpt: How markets digest information — the Glosten–Milgrom model, its bid–ask spread, and Bayesian belief updates
-description: "Step-by-step explanation of the Glosten–Milgrom model: how informed and uninformed traders, adverse selection, and Bayesian belief updates produce the bid–ask spread in market microstructure."
-title: "Glosten–Milgrom Model: Bid–Ask Spread & Bayesian Updates"
+description: "How informed and uninformed traders and adverse selection produce the bid–ask spread in the Glosten–Milgrom model, with Bayesian belief updates."
+title: "Glosten–Milgrom: Spread & Bayesian Updates"
 ---
 
 We are interested in understanding how new information is assimilated by the markets. 

@@ -3,8 +3,8 @@ layout: post
 tags: market_making paper_explained
 mathjax: true
 excerpt: How strategic informed trading produces price impact (Kyle's lambda), market depth, and the linear equilibrium
-description: "Step-by-step Kyle (1985) model: how a strategic informed trader, noise traders, and a competitive market maker produce the linear equilibrium, price impact (Kyle's lambda λ), and market depth."
-title: "Kyle Model: Price Impact, Market Depth & Kyle's Lambda"
+description: "How a strategic informed trader and noise traders create price impact (Kyle's lambda λ), market depth, and the linear equilibrium in the Kyle (1985) model."
+title: "Kyle Model: Price Impact & Kyle's Lambda"
 ---
 
 
