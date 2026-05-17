@@ -2,9 +2,9 @@
 layout: post
 tags: market_making paper_explained
 mathjax: true
-excerpt: Introduction to equilibrium strategies for market participants
-description: Analysis of Kyle's continuous auction model for strategic trading. Explore how informed traders and market makers reach equilibrium, understand optimal trading strategies in the presence of asymmetric information, and learn about price impact and market depth dynamics.
-title: "Kyle model"
+excerpt: How strategic informed trading produces price impact (Kyle's lambda), market depth, and the linear equilibrium
+description: "Step-by-step Kyle (1985) model: how a strategic informed trader, noise traders, and a competitive market maker produce the linear equilibrium, price impact (Kyle's lambda λ), and market depth."
+title: "Kyle Model: Price Impact, Market Depth & Kyle's Lambda"
 ---
 
 

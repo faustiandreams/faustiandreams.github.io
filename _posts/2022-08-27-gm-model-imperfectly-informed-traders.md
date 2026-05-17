@@ -2,9 +2,9 @@
 layout: post
 tags: market_making
 mathjax: true
-excerpt: Extension of the Glosten Milgrom model to allow for uncertain informed traders
-description: Extension of the classic Glosten Milgrom model to incorporate imperfect information. Understand how signal accuracy affects bid-ask spreads, explore the mathematics of probabilistic trading signals, and see how the model bridges perfectly informed and uninformed trader behavior.
-title: "Glosten Milgrom with imperfectly informed traders"
+excerpt: How signal accuracy in the Glosten–Milgrom model widens the bid–ask spread (noisy informed traders)
+description: "Glosten–Milgrom with a noisy informed signal: how signal accuracy ρ enters the bid–ask spread, why a sharper signal widens it, and how ρ=1 recovers the perfectly informed case."
+title: "Glosten–Milgrom with Imperfectly Informed Traders: Signal Accuracy & Bid–Ask Spread"
 ---
 
 We extend the GM model presented [here]({{ site.baseurl }}{% link _posts/2022-08-23-glosten-milgrom-model.md %})
